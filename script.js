@@ -1868,7 +1868,16 @@ function customizeCharacter() {
 
 // SVG Avatar definitions
 const avatarSVGs = {
-    'avatar-male-1': 'href="charactersvgs/suitm1.svg"',
+    'avatar-male-1': 'src="charactersvgs/suitm1.svg"',
+    'avatar-female-1': 'src="charactersvgs/suitf1.svg"',
+    'avatar-male-2': 'src="charactersvgs/suitm2.svg"',
+    'avatar-female-2': 'src="charactersvgs/suitf2.svg"',
+    'avatar-male-3': 'src="charactersvgs/casualm1.svg"',
+    'avatar-female-3': 'src="charactersvgs/casualf1.svg"',
+    'avatar-male-4': 'src="charactersvgs/casualm2.svg"',
+    'avatar-female-4': 'src="charactersvgs/casualf2.svg"'
+};
+    'avatar-male-1': 'src="charactersvgs/suitm1.svg"',
     'avatar-female-1': 'href="charactersvgs/suitf1.svg"',
     'avatar-male-2': 'href="charactersvgs/suitm2.svg"',
     'avatar-female-2': 'href="charactersvgs/suitf2.svg"',
