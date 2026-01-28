@@ -1392,6 +1392,12 @@ document.head.appendChild(style);
 // Initialize the game when DOM is loaded
 document.addEventListener('DOMContentLoaded', initGame);
 
+// Remove loading class to show content with fade-in effect
+window.addEventListener('load', () => {
+    document.body.classList.remove('loading');
+    document.body.classList.add('loaded');
+});
+
 // Add keyboard shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

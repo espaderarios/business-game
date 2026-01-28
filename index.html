@@ -6,8 +6,18 @@
     <title>Business Empire - Build Your Fortune</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Prevent FOUC (Flash of Unstyled Content) */
+        body {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
 </head>
-<body>
+<body class="loading">
     <div class="app-container">
         <!-- Header -->
         <header class="header">
@@ -122,8 +132,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('lemonade')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('lemonade')" style="display: none;">Upgrade $1,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('lemonade')" style="display: none;">Manager $2,500</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('lemonade')">Upgrade $1,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('lemonade')">Manager $2,500</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="kiosk">
@@ -134,8 +144,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('kiosk')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('kiosk')" style="display: none;">Upgrade $4,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('kiosk')" style="display: none;">Manager $10,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('kiosk')">Upgrade $4,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('kiosk')">Manager $10,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="foodtruck">
@@ -146,8 +156,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('foodtruck')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('foodtruck')" style="display: none;">Upgrade $100,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('foodtruck')" style="display: none;">Manager $250,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('foodtruck')">Upgrade $100,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('foodtruck')">Manager $250,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="smallstore">
@@ -158,8 +168,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('smallstore')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('smallstore')" style="display: none;">Upgrade $200,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('smallstore')" style="display: none;">Manager $500,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('smallstore')">Upgrade $200,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('smallstore')">Manager $500,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="boutique">
@@ -170,8 +180,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('boutique')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('boutique')" style="display: none;">Upgrade $300,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('boutique')" style="display: none;">Manager $750,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('boutique')">Upgrade $300,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('boutique')">Manager $750,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="restaurant">
@@ -182,8 +192,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('restaurant')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('restaurant')" style="display: none;">Upgrade $600,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('restaurant')" style="display: none;">Manager $1,500,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('restaurant')">Upgrade $600,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('restaurant')">Manager $1,500,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="cafe">
@@ -194,8 +204,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('cafe')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('cafe')" style="display: none;">Upgrade $1,200,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('cafe')" style="display: none;">Manager $3,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('cafe')">Upgrade $1,200,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('cafe')">Manager $3,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="bar">
@@ -206,8 +216,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('bar')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('bar')" style="display: none;">Upgrade $1,800,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('bar')" style="display: none;">Manager $4,500,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('bar')">Upgrade $1,800,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('bar')">Manager $4,500,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="salon">
@@ -218,8 +228,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('salon')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('salon')" style="display: none;">Upgrade $2,400,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('salon')" style="display: none;">Manager $6,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('salon')">Upgrade $2,400,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('salon')">Manager $6,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="gym">
@@ -230,8 +240,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('gym')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('gym')" style="display: none;">Upgrade $3,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('gym')" style="display: none;">Manager $7,500,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('gym')">Upgrade $3,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('gym')">Manager $7,500,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="hotel">
@@ -242,8 +252,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('hotel')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('hotel')" style="display: none;">Upgrade $7,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('hotel')" style="display: none;">Manager $17,500,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('hotel')">Upgrade $7,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('hotel')">Manager $17,500,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="nightclub">
@@ -254,8 +264,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('nightclub')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('nightclub')" style="display: none;">Upgrade $12,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('nightclub')" style="display: none;">Manager $30,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('nightclub')">Upgrade $12,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('nightclub')">Manager $30,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="mall">
@@ -266,8 +276,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('mall')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('mall')" style="display: none;">Upgrade $20,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('mall')" style="display: none;">Manager $50,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('mall')">Upgrade $20,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('mall')">Manager $50,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="casino">
@@ -278,8 +288,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('casino')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('casino')" style="display: none;">Upgrade $30,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('casino')" style="display: none;">Manager $75,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('casino')">Upgrade $30,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('casino')">Manager $75,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="techstartup">
@@ -290,8 +300,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('techstartup')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('techstartup')" style="display: none;">Upgrade $50,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('techstartup')" style="display: none;">Manager $125,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('techstartup')">Upgrade $50,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('techstartup')">Manager $125,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="crypto">
@@ -302,8 +312,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('crypto')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('crypto')" style="display: none;">Upgrade $100,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('crypto')" style="display: none;">Manager $250,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('crypto')">Upgrade $100,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('crypto')">Manager $250,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="realestate">
@@ -314,8 +324,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('realestate')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('realestate')" style="display: none;">Upgrade $200,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('realestate')" style="display: none;">Manager $500,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('realestate')">Upgrade $200,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('realestate')">Manager $500,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="stockmarket">
@@ -326,8 +336,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('stockmarket')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('stockmarket')" style="display: none;">Upgrade $400,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('stockmarket')" style="display: none;">Manager $1,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('stockmarket')">Upgrade $400,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('stockmarket')">Manager $1,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="airport">
@@ -338,8 +348,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('airport')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('airport')" style="display: none;">Upgrade $1,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('airport')" style="display: none;">Manager $2,500,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('airport')">Upgrade $1,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('airport')">Manager $2,500,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="spaceline">
@@ -350,8 +360,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('spaceline')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('spaceline')" style="display: none;">Upgrade $1,500,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('spaceline')" style="display: none;">Manager $3,750,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('spaceline')">Upgrade $1,500,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('spaceline')">Manager $3,750,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="satellite">
@@ -362,8 +372,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('satellite')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('satellite')" style="display: none;">Upgrade $2,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('satellite')" style="display: none;">Manager $5,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('satellite')">Upgrade $2,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('satellite')">Manager $5,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="megacorp">
@@ -374,8 +384,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('megacorp')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('megacorp')" style="display: none;">Upgrade $5,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('megacorp')" style="display: none;">Manager $12,500,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('megacorp')">Upgrade $5,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('megacorp')">Manager $12,500,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="globalbank">
@@ -386,8 +396,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('globalbank')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('globalbank')" style="display: none;">Upgrade $10,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('globalbank')" style="display: none;">Manager $25,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('globalbank')">Upgrade $10,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('globalbank')">Manager $25,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="spacemining">
@@ -398,8 +408,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('spacemining')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('spacemining')" style="display: none;">Upgrade $20,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('spacemining')" style="display: none;">Manager $50,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('spacemining')">Upgrade $20,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('spacemining')">Manager $50,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="quantumtech">
@@ -410,8 +420,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('quantumtech')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('quantumtech')" style="display: none;">Upgrade $50,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('quantumtech')" style="display: none;">Manager $125,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('quantumtech')">Upgrade $50,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('quantumtech')">Manager $125,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="interstellar">
@@ -422,8 +432,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('interstellar')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('interstellar')" style="display: none;">Upgrade $100,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('interstellar')" style="display: none;">Manager $250,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('interstellar')">Upgrade $100,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('interstellar')">Manager $250,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="dysonsphere">
@@ -434,8 +444,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('dysonsphere')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('dysonsphere')" style="display: none;">Upgrade $200,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('dysonsphere')" style="display: none;">Manager $500,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('dysonsphere')">Upgrade $200,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('dysonsphere')">Manager $500,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="galaxywide">
@@ -446,8 +456,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('galaxywide')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('galaxywide')" style="display: none;">Upgrade $500,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('galaxywide')" style="display: none;">Manager $1,250,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('galaxywide')">Upgrade $500,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('galaxywide')">Manager $1,250,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="universal">
@@ -458,8 +468,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('universal')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('universal')" style="display: none;">Upgrade $1,000,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('universal')" style="display: none;">Manager $2,500,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('universal')">Upgrade $1,000,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('universal')">Manager $2,500,000,000,000</button>
                             </div>
                         </div>
                         <div class="venture-card" data-venture="multiverse">
@@ -470,8 +480,8 @@
                             <div class="venture-level">Level <span class="level-value">1</span></div>
                             <div class="venture-actions">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('multiverse')">Buy</button>
-                                <button class="venture-btn upgrade-btn" onclick="upgradeVenture('multiverse')" style="display: none;">Upgrade $2,000,000,000,000</button>
-                                <button class="venture-btn manager-btn" onclick="hireManager('multiverse')" style="display: none;">Manager $5,000,000,000,000</button>
+                                <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('multiverse')">Upgrade $2,000,000,000,000</button>
+                                <button class="venture-btn manager-btn hidden" onclick="hireManager('multiverse')">Manager $5,000,000,000,000</button>
                             </div>
                         </div>
                     </div>
