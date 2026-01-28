@@ -5,36 +5,36 @@ const gameState = {
     currentStage: 'Beginner',
     stageProgress: 0,
     ventures: {
-        lemonade:    { owned: false, cost: 500,        income: 50,        purchased: false, manager: false, managerCost: 2500, level: 1, upgradeCost: 1000, baseIncome: 50 },
-        kiosk:       { owned: false, cost: 2000,       income: 150,       purchased: false, manager: false, managerCost: 10000, level: 1, upgradeCost: 4000, baseIncome: 150 },
-        foodtruck:   { owned: false, cost: 50000,      income: 2500,      purchased: false, manager: false, managerCost: 250000, level: 1, upgradeCost: 100000, baseIncome: 2500 },
-        smallstore:  { owned: false, cost: 100000,     income: 4000,      purchased: false, manager: false, managerCost: 500000, level: 1, upgradeCost: 200000, baseIncome: 4000 },
-        boutique:    { owned: false, cost: 150000,     income: 6000,      purchased: false, manager: false, managerCost: 750000, level: 1, upgradeCost: 300000, baseIncome: 6000 },
-        restaurant:  { owned: false, cost: 300000,     income: 12000,     purchased: false, manager: false, managerCost: 1500000, level: 1, upgradeCost: 600000, baseIncome: 12000 },
-        cafe:        { owned: false, cost: 600000,     income: 20000,     purchased: false, manager: false, managerCost: 3000000, level: 1, upgradeCost: 1200000, baseIncome: 20000 },
-        bar:         { owned: false, cost: 900000,     income: 30000,     purchased: false, manager: false, managerCost: 4500000, level: 1, upgradeCost: 1800000, baseIncome: 30000 },
-        salon:       { owned: false, cost: 1200000,    income: 40000,     purchased: false, manager: false, managerCost: 6000000, level: 1, upgradeCost: 2400000, baseIncome: 40000 },
-        gym:         { owned: false, cost: 1500000,    income: 45000,     purchased: false, manager: false, managerCost: 7500000, level: 1, upgradeCost: 3000000, baseIncome: 45000 },
-        hotel:       { owned: false, cost: 3500000,    income: 90000,     purchased: false, manager: false, managerCost: 17500000, level: 1, upgradeCost: 7000000, baseIncome: 90000 },
-        nightclub:   { owned: false, cost: 6000000,    income: 150000,    purchased: false, manager: false, managerCost: 30000000, level: 1, upgradeCost: 12000000, baseIncome: 150000 },
-        mall:        { owned: false, cost: 10000000,   income: 250000,    purchased: false, manager: false, managerCost: 50000000, level: 1, upgradeCost: 20000000, baseIncome: 250000 },
-        casino:      { owned: false, cost: 15000000,   income: 350000,    purchased: false, manager: false, managerCost: 75000000, level: 1, upgradeCost: 30000000, baseIncome: 350000 },
-        techstartup: { owned: false, cost: 25000000,   income: 600000,    purchased: false, manager: false, managerCost: 125000000, level: 1, upgradeCost: 50000000, baseIncome: 600000 },
-        crypto:      { owned: false, cost: 50000000,   income: 1200000,   purchased: false, manager: false, managerCost: 250000000, level: 1, upgradeCost: 100000000, baseIncome: 1200000 },
-        realestate:  { owned: false, cost: 100000000,  income: 2200000,   purchased: false, manager: false, managerCost: 500000000, level: 1, upgradeCost: 200000000, baseIncome: 2200000 },
-        stockmarket: { owned: false, cost: 200000000,  income: 4000000,   purchased: false, manager: false, managerCost: 1000000000, level: 1, upgradeCost: 400000000, baseIncome: 4000000 },
-        airport:     { owned: false, cost: 500000000,  income: 9000000,   purchased: false, manager: false, managerCost: 2500000000, level: 1, upgradeCost: 1000000000, baseIncome: 9000000 },
-        spaceline:   { owned: false, cost: 750000000,  income: 12000000,  purchased: false, manager: false, managerCost: 3750000000, level: 1, upgradeCost: 1500000000, baseIncome: 12000000 },
-        satellite:   { owned: false, cost: 1000000000, income: 15000000,  purchased: false, manager: false, managerCost: 5000000000, level: 1, upgradeCost: 2000000000, baseIncome: 15000000 },
-        megacorp:     { owned: false, cost: 2500000000, income: 35000000,  purchased: false, manager: false, managerCost: 12500000000, level: 1, upgradeCost: 5000000000, baseIncome: 35000000 },
-        globalbank:   { owned: false, cost: 5000000000, income: 70000000,  purchased: false, manager: false, managerCost: 25000000000, level: 1, upgradeCost: 10000000000, baseIncome: 70000000 },
-        spacemining:  { owned: false, cost: 10000000000, income: 140000000, purchased: false, manager: false, managerCost: 50000000000, level: 1, upgradeCost: 20000000000, baseIncome: 140000000 },
-        quantumtech:  { owned: false, cost: 25000000000, income: 350000000, purchased: false, manager: false, managerCost: 125000000000, level: 1, upgradeCost: 50000000000, baseIncome: 350000000 },
-        interstellar: { owned: false, cost: 50000000000, income: 700000000, purchased: false, manager: false, managerCost: 250000000000, level: 1, upgradeCost: 100000000000, baseIncome: 700000000 },
-        dysonsphere:  { owned: false, cost: 100000000000, income: 1400000000, purchased: false, manager: false, managerCost: 500000000000, level: 1, upgradeCost: 200000000000, baseIncome: 1400000000 },
-        galaxywide:   { owned: false, cost: 250000000000, income: 3500000000, purchased: false, manager: false, managerCost: 1250000000000, level: 1, upgradeCost: 500000000000, baseIncome: 3500000000 },
-        universal:    { owned: false, cost: 500000000000, income: 7000000000, purchased: false, manager: false, managerCost: 2500000000000, level: 1, upgradeCost: 1000000000000, baseIncome: 7000000000 },
-        multiverse:   { owned: false, cost: 1000000000000, income: 14000000000, purchased: false, manager: false, managerCost: 5000000000000, level: 1, upgradeCost: 2000000000000, baseIncome: 14000000000 }
+        lemonade:    { owned: false, cost: 500,        income: 50,        purchased: false, manager: false, managerCost: 2500, level: 1, upgradeCost: 1000, baseIncome: 50, baseCost: 500, quantity: 0 },
+        kiosk:       { owned: false, cost: 2000,       income: 150,       purchased: false, manager: false, managerCost: 10000, level: 1, upgradeCost: 4000, baseIncome: 150, baseCost: 2000, quantity: 0 },
+        foodtruck:   { owned: false, cost: 50000,      income: 2500,      purchased: false, manager: false, managerCost: 250000, level: 1, upgradeCost: 100000, baseIncome: 2500, baseCost: 50000, quantity: 0 },
+        smallstore:  { owned: false, cost: 100000,     income: 4000,      purchased: false, manager: false, managerCost: 500000, level: 1, upgradeCost: 200000, baseIncome: 4000, baseCost: 100000, quantity: 0 },
+        boutique:    { owned: false, cost: 150000,     income: 6000,      purchased: false, manager: false, managerCost: 750000, level: 1, upgradeCost: 300000, baseIncome: 6000, baseCost: 150000, quantity: 0 },
+        restaurant:  { owned: false, cost: 300000,     income: 12000,     purchased: false, manager: false, managerCost: 1500000, level: 1, upgradeCost: 600000, baseIncome: 12000, baseCost: 300000, quantity: 0 },
+        cafe:        { owned: false, cost: 600000,     income: 20000,     purchased: false, manager: false, managerCost: 3000000, level: 1, upgradeCost: 1200000, baseIncome: 20000, baseCost: 600000, quantity: 0 },
+        bar:         { owned: false, cost: 900000,     income: 30000,     purchased: false, manager: false, managerCost: 4500000, level: 1, upgradeCost: 1800000, baseIncome: 30000, baseCost: 900000, quantity: 0 },
+        salon:       { owned: false, cost: 1200000,    income: 40000,     purchased: false, manager: false, managerCost: 6000000, level: 1, upgradeCost: 2400000, baseIncome: 40000, baseCost: 1200000, quantity: 0 },
+        gym:         { owned: false, cost: 1500000,    income: 45000,     purchased: false, manager: false, managerCost: 7500000, level: 1, upgradeCost: 3000000, baseIncome: 45000, baseCost: 1500000, quantity: 0 },
+        hotel:       { owned: false, cost: 3500000,    income: 90000,     purchased: false, manager: false, managerCost: 17500000, level: 1, upgradeCost: 7000000, baseIncome: 90000, baseCost: 3500000, quantity: 0 },
+        nightclub:   { owned: false, cost: 6000000,    income: 150000,    purchased: false, manager: false, managerCost: 30000000, level: 1, upgradeCost: 12000000, baseIncome: 150000, baseCost: 6000000, quantity: 0 },
+        mall:        { owned: false, cost: 10000000,   income: 250000,    purchased: false, manager: false, managerCost: 50000000, level: 1, upgradeCost: 20000000, baseIncome: 250000, baseCost: 10000000, quantity: 0 },
+        casino:      { owned: false, cost: 15000000,   income: 350000,    purchased: false, manager: false, managerCost: 75000000, level: 1, upgradeCost: 30000000, baseIncome: 350000, baseCost: 15000000, quantity: 0 },
+        techstartup: { owned: false, cost: 25000000,   income: 600000,    purchased: false, manager: false, managerCost: 125000000, level: 1, upgradeCost: 50000000, baseIncome: 600000, baseCost: 25000000, quantity: 0 },
+        crypto:      { owned: false, cost: 50000000,   income: 1200000,   purchased: false, manager: false, managerCost: 250000000, level: 1, upgradeCost: 100000000, baseIncome: 1200000, baseCost: 50000000, quantity: 0 },
+        realestate:  { owned: false, cost: 100000000,  income: 2200000,   purchased: false, manager: false, managerCost: 500000000, level: 1, upgradeCost: 200000000, baseIncome: 2200000, baseCost: 100000000, quantity: 0 },
+        stockmarket: { owned: false, cost: 200000000,  income: 4000000,   purchased: false, manager: false, managerCost: 1000000000, level: 1, upgradeCost: 400000000, baseIncome: 4000000, baseCost: 200000000, quantity: 0 },
+        airport:     { owned: false, cost: 500000000,  income: 9000000,   purchased: false, manager: false, managerCost: 2500000000, level: 1, upgradeCost: 1000000000, baseIncome: 9000000, baseCost: 500000000, quantity: 0 },
+        spaceline:   { owned: false, cost: 750000000,  income: 12000000,  purchased: false, manager: false, managerCost: 3750000000, level: 1, upgradeCost: 1500000000, baseIncome: 12000000, baseCost: 750000000, quantity: 0 },
+        satellite:   { owned: false, cost: 1000000000, income: 15000000,  purchased: false, manager: false, managerCost: 5000000000, level: 1, upgradeCost: 2000000000, baseIncome: 15000000, baseCost: 1000000000, quantity: 0 },
+        megacorp:     { owned: false, cost: 2500000000, income: 35000000,  purchased: false, manager: false, managerCost: 12500000000, level: 1, upgradeCost: 5000000000, baseIncome: 35000000, baseCost: 2500000000, quantity: 0 },
+        globalbank:   { owned: false, cost: 5000000000, income: 70000000,  purchased: false, manager: false, managerCost: 25000000000, level: 1, upgradeCost: 10000000000, baseIncome: 70000000, baseCost: 5000000000, quantity: 0 },
+        spacemining:  { owned: false, cost: 10000000000, income: 140000000, purchased: false, manager: false, managerCost: 50000000000, level: 1, upgradeCost: 20000000000, baseIncome: 140000000, baseCost: 10000000000, quantity: 0 },
+        quantumtech:  { owned: false, cost: 25000000000, income: 350000000, purchased: false, manager: false, managerCost: 125000000000, level: 1, upgradeCost: 50000000000, baseIncome: 350000000, baseCost: 25000000000, quantity: 0 },
+        interstellar: { owned: false, cost: 50000000000, income: 700000000, purchased: false, manager: false, managerCost: 250000000000, level: 1, upgradeCost: 100000000000, baseIncome: 700000000, baseCost: 50000000000, quantity: 0 },
+        dysonsphere:  { owned: false, cost: 100000000000, income: 1400000000, purchased: false, manager: false, managerCost: 500000000000, level: 1, upgradeCost: 200000000000, baseIncome: 1400000000, baseCost: 100000000000, quantity: 0 },
+        galaxywide:   { owned: false, cost: 250000000000, income: 3500000000, purchased: false, manager: false, managerCost: 1250000000000, level: 1, upgradeCost: 500000000000, baseIncome: 3500000000, baseCost: 250000000000, quantity: 0 },
+        universal:    { owned: false, cost: 500000000000, income: 7000000000, purchased: false, manager: false, managerCost: 2500000000000, level: 1, upgradeCost: 1000000000000, baseIncome: 7000000000, baseCost: 500000000000, quantity: 0 },
+        multiverse:   { owned: false, cost: 1000000000000, income: 14000000000, purchased: false, manager: false, managerCost: 5000000000000, level: 1, upgradeCost: 2000000000000, baseIncome: 14000000000, baseCost: 1000000000000, quantity: 0 }
     },
     assets: {
         house: { level: 1, upgradeCost: 2000, maxLevel: 5, icon: '🏠' },
@@ -940,19 +940,33 @@ function updateVentures() {
             const buyBtn = card.querySelector('.buy-btn');
             const upgradeBtn = card.querySelector('.upgrade-btn');
             const managerBtn = card.querySelector('.manager-btn');
+            const nameElement = card.querySelector('.venture-name');
             
             // Update level display
             if (levelElement) {
                 levelElement.textContent = venture.level;
             }
             
+            // Update name with quantity if owned multiple
+            if (nameElement && venture.quantity > 1) {
+                const baseName = nameElement.textContent.split(' x')[0];
+                nameElement.textContent = `${baseName} x${venture.quantity}`;
+            } else if (nameElement && venture.quantity <= 1) {
+                const baseName = nameElement.textContent.split(' x')[0];
+                nameElement.textContent = baseName;
+            }
+            
             if (venture.owned) {
                 card.classList.add('purchased');
-                card.querySelector('.venture-cost').textContent = 'Owned';
+                card.querySelector('.venture-cost').textContent = `Next: $${formatNumber(venture.cost)}`;
                 card.querySelector('.venture-income').textContent = `+$${formatNumber(venture.income)}/min`;
                 
-                // Show/hide buttons based on purchase status
-                if (buyBtn) buyBtn.style.display = 'none';
+                // Show buy button as "Buy More" for owned ventures
+                if (buyBtn) {
+                    buyBtn.style.display = 'block';
+                    buyBtn.textContent = `Buy More $${formatNumber(venture.cost)}`;
+                    buyBtn.disabled = gameState.balance < venture.cost;
+                }
                 if (upgradeBtn) {
                     upgradeBtn.style.display = 'block';
                     upgradeBtn.textContent = `Upgrade $${formatNumber(venture.upgradeCost)}`;
@@ -975,6 +989,7 @@ function updateVentures() {
                 // Show only buy button for unpurchased ventures
                 if (buyBtn) {
                     buyBtn.style.display = 'block';
+                    buyBtn.textContent = `Buy $${formatNumber(venture.cost)}`;
                     buyBtn.disabled = gameState.balance < venture.cost;
                 }
                 if (upgradeBtn) upgradeBtn.style.display = 'none';
@@ -1193,11 +1208,7 @@ function setupEventListeners() {
         });
     });
     
-    // Transfer button
-    transferBtn.addEventListener('click', () => {
-        showModal('transfer');
-    });
-    
+
     // Top up button (simulated)
     topupBtn.addEventListener('click', () => {
         gameState.balance += 1000;
@@ -1298,21 +1309,21 @@ function purchaseVenture(ventureId) {
         return;
     }
     
-    if (venture.owned) {
-        showNotification('You already own this venture!', 'warning');
-        return;
-    }
-    
     if (gameState.balance >= venture.cost) {
         gameState.balance -= venture.cost;
         venture.owned = true;
-        venture.purchased = true; // Keep for backward compatibility
+        venture.purchased = true;
+        venture.quantity++;
+        
+        // Increase income based on quantity
+        venture.income = Math.floor(venture.baseIncome * venture.quantity);
+        
+        // Increase cost for next purchase (15% increase per purchase)
+        venture.cost = Math.floor(venture.baseCost * Math.pow(1.15, venture.quantity));
         
         updateUI();
-        showNotification(`Purchased ${ventureId}! Now earning $${formatNumber(venture.income)}/min`, 'success');
-        
-        // Increase cost for next purchase (optional)
-        venture.cost = Math.floor(venture.cost * 1.5);
+        updateVentures();
+        showNotification(`Purchased ${ventureId} x${venture.quantity}! Now earning $${formatNumber(venture.income)}/min`, 'success');
     } else {
         showNotification('Insufficient funds!', 'error');
     }
@@ -1335,10 +1346,13 @@ function upgradeVenture(ventureId) {
     // Upgrade the venture
     gameState.balance -= venture.upgradeCost;
     venture.level++;
+    
+    // Increase upgrade cost (doubles each time)
     venture.upgradeCost = Math.floor(venture.upgradeCost * 2);
     
-    // Recalculate income (50% increase per level)
-    venture.income = Math.floor(venture.baseIncome * Math.pow(1.5, venture.level - 1));
+    // Recalculate income (50% increase per level, multiplied by quantity)
+    const levelMultiplier = Math.pow(1.5, venture.level - 1);
+    venture.income = Math.floor(venture.baseIncome * venture.quantity * levelMultiplier);
     
     updateUI();
     updateVentures();
@@ -1514,7 +1528,11 @@ function openVentureDetail(ventureId) {
         gameState.ventureUpgrades[ventureId] = [];
     }
     
-    document.getElementById('ventureDetailName').textContent = ventureNames[ventureId];
+    // Display venture name with quantity if more than 1
+    const ventureName = ventureNames[ventureId];
+    const displayName = venture.quantity > 1 ? `${ventureName} x${venture.quantity}` : ventureName;
+    
+    document.getElementById('ventureDetailName').textContent = displayName;
     document.getElementById('ventureDetailIcon').textContent = ventureIcons[ventureId];
     document.getElementById('ventureDetailLevel').textContent = venture.level;
     document.getElementById('ventureDetailIncome').textContent = `$${formatNumber(venture.income)}/min`;
