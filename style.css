@@ -560,9 +560,7 @@ body {
 }
 
 .modal-overlay.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
 }
 
 .modal {

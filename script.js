@@ -1501,6 +1501,13 @@ let currentVentureDetail = null;
 function openVentureDetail(ventureId) {
     currentVentureDetail = ventureId;
     const venture = gameState.ventures[ventureId];
+    
+    // Safety check
+    if (!venture) {
+        console.error('Venture not found:', ventureId);
+        return;
+    }
+    
     const ventureNames = {
         lemonade: 'Lemonade Stand', kiosk: 'Kiosk', foodtruck: 'Food Truck', smallstore: 'Small Store',
         boutique: 'Boutique', restaurant: 'Restaurant', cafe: 'Cafe', bar: 'Bar', salon: 'Salon',
