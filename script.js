@@ -91,10 +91,7 @@ const gameState = {
     ventureUpgrades: {}, // Will store purchased upgrades for each venture
     character: {
         name: 'Your Name',
-        avatar: '👤',
-        skinTone: '👤',
-        hair: '',
-        outfit: '',
+        avatar: 'avatar-male-1',
         accessory: ''
     }
 };
@@ -890,15 +887,23 @@ function loadGameState() {
         gameState.loveLife = parsed.loveLife || gameState.loveLife;
         gameState.lastSave = parsed.lastSave || gameState.lastSave;
         
-        // Calculate offline earnings
+        // Calculate offline earnings (max 3 hours)
         const now = Date.now();
         const timeDiff = (now - gameState.lastSave) / 1000; // seconds
-        const offlineEarnings = timeDiff * gameState.incomePerSecond;
+        const maxIdleTime = 3 * 60 * 60; // 3 hours in seconds
+        const cappedTimeDiff = Math.min(timeDiff, maxIdleTime); // Cap at 3 hours
+        const offlineEarnings = cappedTimeDiff * gameState.incomePerSecond;
         
         if (offlineEarnings > 0) {
             gameState.balance += offlineEarnings;
             gameState.totalEarnings += offlineEarnings;
-            showNotification(`Welcome back! You earned $${formatNumber(offlineEarnings)} while away.`, 'success');
+            
+            // Show different messages based on whether time was capped
+            if (timeDiff > maxIdleTime) {
+                showNotification(`Welcome back! You earned $${formatNumber(offlineEarnings)} (3 hour limit) while away.`, 'success');
+            } else {
+                showNotification(`Welcome back! You earned $${formatNumber(offlineEarnings)} while away.`, 'success');
+            }
         }
     }
 }
@@ -1588,7 +1593,7 @@ function openVentureDetail(ventureId) {
     }
     
     // Display venture name with quantity if more than 1
-    const ventureName = ventureNames[ventureId];
+     const ventureName = ventureNames[ventureId];
     const displayName = venture.quantity > 1 ? `${ventureName} x${venture.quantity}` : ventureName;
     
     const ventureDetailName = document.getElementById('ventureDetailName');
@@ -1861,18 +1866,37 @@ function customizeCharacter() {
     updateCharacterPreview();
 }
 
+// SVG Avatar definitions
+const avatarSVGs = {
+    'avatar-male-1': 'href="charactersvgs/suitm1.svg"',
+    'avatar-female-1': 'href="charactersvgs/suitf1.svg"',
+    'avatar-male-2': 'href="charactersvgs/suitm2.svg"',
+    'avatar-female-2': 'href="charactersvgs/suitf2.svg"',
+    'avatar-male-3': 'href="charactersvgs/casualm1.svg"',
+    'avatar-female-3': 'href="charactersvgs/casualf1.svg"',
+    'avatar-male-4': 'href="charactersvgs/casualm2.svg"',
+    'avatar-female-4': 'href="charactersvgs/casualf2.svg"'
+};
+
 // Update character preview in customization modal
 function updateCharacterPreview() {
     const preview = document.getElementById('characterPreview');
+    const avatar = document.getElementById('characterAvatar');
+    
+    const avatarSVG = avatarSVGs[gameState.character.avatar] || avatarSVGs['avatar-male-1'];
+    
     if (preview) {
-        const { skinTone, hair, outfit, accessory } = gameState.character;
-        preview.textContent = `${skinTone}${hair}${outfit}${accessory}`;
+        preview.innerHTML = avatarSVG;
     }
     
-    // Update main avatar
-    const avatar = document.getElementById('characterAvatar');
     if (avatar) {
-        avatar.textContent = `${gameState.character.skinTone}${gameState.character.hair}${gameState.character.outfit}${gameState.character.accessory}`;
+        avatar.innerHTML = avatarSVG;
+    }
+    
+    // Update name input with current name
+    const nameInput = document.getElementById('characterNameInput');
+    if (nameInput) {
+        nameInput.value = gameState.character.name;
     }
 }
 
@@ -1884,10 +1908,13 @@ function selectCustomization(type, value) {
             gameState.character.name = nameInput.value.trim();
             document.getElementById('characterName').textContent = gameState.character.name;
         }
-    } else {
-        gameState.character[type] = value;
+    } else if (type === 'avatar') {
+        gameState.character.avatar = value;
+        updateCharacterPreview();
+    } else if (type === 'accessory') {
+        gameState.character.accessory = value;
+        updateCharacterPreview();
     }
-    updateCharacterPreview();
 }
 
 // Save character customization

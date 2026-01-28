@@ -2074,20 +2074,57 @@
                 <div class="customize-section">
                     <h3>Avatar</h3>
                     <div class="option-grid">
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👤')">👤</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨')">👨</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩')">👩</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '🧑')">🧑</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏻')">👨🏻</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏼')">👨🏼</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏽')">👨🏽</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏾')">👨🏾</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏿')">👨🏿</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏻')">👩🏻</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏼')">👩🏼</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏽')">👩🏽</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏾')">👩🏾</button>
-                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏿')">👩🏿</button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-male-1')" title="Male Avatar 1">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="30" r="20" fill="#f4a460"/>
+                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#3b82f6"/>
+                                <circle cx="40" cy="27" r="3" fill="#000"/>
+                                <circle cx="60" cy="27" r="3" fill="#000"/>
+                            </svg>
+                        </button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-female-1')" title="Female Avatar 1">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="30" r="20" fill="#f4a460"/>
+                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#ec4899"/>
+                                <circle cx="40" cy="27" r="3" fill="#000"/>
+                                <circle cx="60" cy="27" r="3" fill="#000"/>
+                                <path d="M 35 60 Q 50 55 65 60" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-male-2')" title="Male Avatar 2">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="30" r="20" fill="#d4a574"/>
+                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#10b981"/>
+                                <circle cx="40" cy="27" r="3" fill="#000"/>
+                                <circle cx="60" cy="27" r="3" fill="#000"/>
+                                <path d="M 35 45 Q 50 40 65 45" stroke="#333" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-female-2')" title="Female Avatar 2">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="30" r="20" fill="#c084fc"/>
+                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#f97316"/>
+                                <circle cx="40" cy="27" r="3" fill="#000"/>
+                                <circle cx="60" cy="27" r="3" fill="#000"/>
+                                <path d="M 50 25 L 45 20 M 50 25 L 55 20 M 50 25 L 50 18" stroke="#c084fc" stroke-width="1.5" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-dark')" title="Dark Avatar">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="30" r="20" fill="#3d3d3d"/>
+                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#1e1e1e"/>
+                                <circle cx="40" cy="27" r="3" fill="#fff"/>
+                                <circle cx="60" cy="27" r="3" fill="#fff"/>
+                            </svg>
+                        </button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-light')" title="Light Avatar">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="30" r="20" fill="#ffd699"/>
+                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#fef3c7"/>
+                                <circle cx="40" cy="27" r="3" fill="#000"/>
+                                <circle cx="60" cy="27" r="3" fill="#000"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 
