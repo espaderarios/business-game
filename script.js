@@ -1135,8 +1135,31 @@ function checkStageProgress() {
     }
 }
 
+function ensureVentureUpgradeButtons() {
+    document.querySelectorAll('.venture-card').forEach(card => {
+        const ventureId = card.dataset.venture;
+        const actions = card.querySelector('.venture-actions');
+        
+        if (!actions || actions.querySelector('.detail-btn')) {
+            return;
+        }
+        
+        const detailBtn = document.createElement('button');
+        detailBtn.className = 'venture-btn detail-btn';
+        detailBtn.type = 'button';
+        detailBtn.textContent = 'Upgrades';
+        detailBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            openVentureDetail(ventureId);
+        });
+        
+        actions.appendChild(detailBtn);
+    });
+}
+
 // Setup event listeners
 function setupEventListeners() {
+    ensureVentureUpgradeButtons();
     // Venture purchases
     document.querySelectorAll('.venture-card').forEach(card => {
         card.addEventListener('click', () => {
