@@ -1562,16 +1562,34 @@ function openVentureDetail(ventureId) {
     const ventureName = ventureNames[ventureId];
     const displayName = venture.quantity > 1 ? `${ventureName} x${venture.quantity}` : ventureName;
     
-    document.getElementById('ventureDetailName').textContent = displayName;
-    document.getElementById('ventureDetailIcon').textContent = ventureIcons[ventureId];
-    document.getElementById('ventureDetailLevel').textContent = venture.level;
-    document.getElementById('ventureDetailIncome').textContent = `$${formatNumber(venture.income)}/min`;
-    document.getElementById('ventureDetailUpgrades').textContent = gameState.ventureUpgrades[ventureId].length;
+    const ventureDetailName = document.getElementById('ventureDetailName');
+    const ventureDetailIcon = document.getElementById('ventureDetailIcon');
+    const ventureDetailLevel = document.getElementById('ventureDetailLevel');
+    const ventureDetailIncome = document.getElementById('ventureDetailIncome');
+    const ventureDetailUpgrades = document.getElementById('ventureDetailUpgrades');
+    
+    if (!ventureDetailName || !ventureDetailIcon || !ventureDetailLevel || !ventureDetailIncome || !ventureDetailUpgrades) {
+        console.error('Venture detail modal elements not found.');
+        return;
+    }
+    
+    ventureDetailName.textContent = displayName;
+    ventureDetailIcon.textContent = ventureIcons[ventureId];
+    ventureDetailLevel.textContent = venture.level;
+    ventureDetailIncome.textContent = `$${formatNumber(venture.income)}/min`;
+    ventureDetailUpgrades.textContent = gameState.ventureUpgrades[ventureId].length;
     
     // Manager section
     const managerCost = venture.managerCost;
-    document.getElementById('ventureDetailManagerCost').textContent = `$${formatNumber(managerCost)}`;
+    const managerCostEl = document.getElementById('ventureDetailManagerCost');
     const managerBtn = document.getElementById('ventureDetailManagerBtn');
+    
+    if (!managerCostEl || !managerBtn) {
+        console.error('Venture detail manager elements not found.');
+        return;
+    }
+    
+    managerCostEl.textContent = `$${formatNumber(managerCost)}`;
     managerBtn.disabled = venture.manager || gameState.balance < managerCost;
     if (venture.manager) {
         managerBtn.innerHTML = '✓ Hired';
@@ -1583,6 +1601,10 @@ function openVentureDetail(ventureId) {
     
     // Populate upgrades
     const upgradesGrid = document.getElementById('ventureUpgradesGrid');
+    if (!upgradesGrid) {
+        console.error('Venture upgrades grid not found.');
+        return;
+    }
     upgradesGrid.innerHTML = '';
     
     const upgrades = ventureUpgrades[ventureId] || [];
