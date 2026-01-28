@@ -88,7 +88,15 @@ const gameState = {
     notifications: [],
     currentCity: 'New York',
     unlockedCities: ['New York'],
-    ventureUpgrades: {} // Will store purchased upgrades for each venture
+    ventureUpgrades: {}, // Will store purchased upgrades for each venture
+    character: {
+        name: 'Your Name',
+        avatar: '👤',
+        skinTone: '👤',
+        hair: '',
+        outfit: '',
+        accessory: ''
+    }
 };
 
 // Venture-specific upgrades
@@ -261,10 +269,19 @@ const cities = [
 
 // Life activities
 const lifeActivities = [
-    { name: 'Exercise', cost: 0, effect: { health: 10, happiness: 5 }, icon: '🏃' },
+    { name: 'Exercise', cost: 0, effect: { health: 15, happiness: 5 }, icon: '🏃' },
+    { name: 'Gym', cost: 50, effect: { health: 20, happiness: 10 }, icon: '💪' },
+    { name: 'Spa', cost: 500, effect: { health: 25, happiness: 30 }, icon: '🧖' },
     { name: 'Meditation', cost: 0, effect: { happiness: 8, intelligence: 3 }, icon: '🧘' },
-    { name: 'Study Course', cost: 500, effect: { intelligence: 15 }, icon: '📚' },
+    { name: 'Read', cost: 0, effect: { intelligence: 8, happiness: 5 }, icon: '📖' },
+    { name: 'Course', cost: 1000, effect: { intelligence: 25 }, icon: '🎓' },
+    { name: 'CoffeeHangout', cost: 100, effect: { social: 12, happiness: 8 }, icon: '☕' },
     { name: 'Party', cost: 200, effect: { happiness: 12, social: 10 }, icon: '🎉' },
+    { name: 'Concert', cost: 500, effect: { happiness: 18, social: 15 }, icon: '🎵' },
+    { name: 'Yacht', cost: 5000, effect: { happiness: 35, social: 25, health: 15 }, icon: '🛥️' },
+    { name: 'VacationResort', cost: 10000, effect: { health: 40, happiness: 40, social: 20 }, icon: '🏝️' },
+    { name: 'SpaceTrip', cost: 100000, effect: { happiness: 50, social: 30, intelligence: 20 }, icon: '🚀' },
+    { name: 'Study Course', cost: 500, effect: { intelligence: 15 }, icon: '📚' },
     { name: 'Spa Day', cost: 300, effect: { health: 15, happiness: 20 }, icon: '💆' },
     { name: 'Networking', cost: 100, effect: { social: 15, intelligence: 5 }, icon: '🤝' }
 ];
@@ -1498,6 +1515,9 @@ function showModal(type) {
         updatePrestigeModal();
     } else if (type === 'ventureDetail') {
         ventureDetailModal.classList.add('active');
+    } else if (type === 'characterCustomize') {
+        const customizeModal = document.getElementById('characterCustomizeModal');
+        if (customizeModal) customizeModal.classList.add('active');
     }
 }
 
@@ -1520,6 +1540,9 @@ function hideModal(type) {
         prestigeModal.classList.remove('active');
     } else if (type === 'ventureDetail') {
         ventureDetailModal.classList.remove('active');
+    } else if (type === 'characterCustomize') {
+        const customizeModal = document.getElementById('characterCustomizeModal');
+        if (customizeModal) customizeModal.classList.remove('active');
     }
 }
 
@@ -1834,29 +1857,56 @@ function selectCity(cityName) {
 
 // Customize character
 function customizeCharacter() {
-    showNotification('Character customization coming soon!', 'info');
+    showModal('characterCustomize');
+    updateCharacterPreview();
 }
 
-// Map activity names from HTML to lifeActivities array
-const activityNameMap = {
-    'Exercise': 'Exercise',
-    'Gym': 'Spa Day',
-    'Spa': 'Spa Day',
-    'Meditation': 'Meditation',
-    'Read': 'Study Course',
-    'Course': 'Study Course',
-    'CoffeeHangout': 'Networking',
-    'Party': 'Party',
-    'Concert': 'Party',
-    'Yacht': 'Spa Day',
-    'VacationResort': 'Spa Day',
-    'SpaceTrip': 'Party'
-};
+// Update character preview in customization modal
+function updateCharacterPreview() {
+    const preview = document.getElementById('characterPreview');
+    if (preview) {
+        const { skinTone, hair, outfit, accessory } = gameState.character;
+        preview.textContent = `${skinTone}${hair}${outfit}${accessory}`;
+    }
+    
+    // Update main avatar
+    const avatar = document.getElementById('characterAvatar');
+    if (avatar) {
+        avatar.textContent = `${gameState.character.skinTone}${gameState.character.hair}${gameState.character.outfit}${gameState.character.accessory}`;
+    }
+}
+
+// Select character customization option
+function selectCustomization(type, value) {
+    if (type === 'name') {
+        const nameInput = document.getElementById('characterNameInput');
+        if (nameInput && nameInput.value.trim()) {
+            gameState.character.name = nameInput.value.trim();
+            document.getElementById('characterName').textContent = gameState.character.name;
+        }
+    } else {
+        gameState.character[type] = value;
+    }
+    updateCharacterPreview();
+}
+
+// Save character customization
+function saveCharacterCustomization() {
+    const nameInput = document.getElementById('characterNameInput');
+    if (nameInput && nameInput.value.trim()) {
+        gameState.character.name = nameInput.value.trim();
+        document.getElementById('characterName').textContent = gameState.character.name;
+    }
+    
+    updateCharacterPreview();
+    hideModal('characterCustomize');
+    showNotification('Character customized!', 'success');
+    saveGameState();
+}
 
 // Perform activity (wrapper for performLifeActivity)
 function performActivity(activityName) {
-    const mappedName = activityNameMap[activityName] || activityName;
-    performLifeActivity(mappedName);
+    performLifeActivity(activityName);
 }
 
 // Perform life activity

@@ -2053,6 +2053,63 @@
         </div>
     </div>
 
+    <!-- Character Customization Modal -->
+    <div class="modal" id="characterCustomizeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Customize Character</h2>
+                <button class="close-btn" onclick="hideModal('characterCustomize')">✕</button>
+            </div>
+            
+            <div class="customize-content">
+                <div class="character-preview">
+                    <div id="characterPreview" class="preview-avatar">👤</div>
+                </div>
+                
+                <div class="customize-section">
+                    <h3>Name</h3>
+                    <input type="text" id="characterNameInput" placeholder="Enter your name" maxlength="20" />
+                </div>
+                
+                <div class="customize-section">
+                    <h3>Avatar</h3>
+                    <div class="option-grid">
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👤')">👤</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨')">👨</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩')">👩</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '🧑')">🧑</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏻')">👨🏻</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏼')">👨🏼</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏽')">👨🏽</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏾')">👨🏾</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👨🏿')">👨🏿</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏻')">👩🏻</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏼')">👩🏼</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏽')">👩🏽</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏾')">👩🏾</button>
+                        <button class="option-btn" onclick="selectCustomization('skinTone', '👩🏿')">👩🏿</button>
+                    </div>
+                </div>
+                
+                <div class="customize-section">
+                    <h3>Accessories</h3>
+                    <div class="option-grid">
+                        <button class="option-btn" onclick="selectCustomization('accessory', '')">None</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '👔')">👔</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '👗')">👗</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '🎩')">🎩</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '👑')">👑</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '🕶️')">🕶️</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '💼')">💼</button>
+                        <button class="option-btn" onclick="selectCustomization('accessory', '⌚')">⌚</button>
+                    </div>
+                </div>
+                
+                <button class="action-btn save-btn" onclick="saveCharacterCustomization()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
