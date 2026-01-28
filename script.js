@@ -1087,10 +1087,16 @@ function updateCities() {
 
 // Check for city unlocks
 function checkCityUnlocks() {
+    const currentStageIndex = stages.findIndex(stage => stage.name === gameState.currentStage);
+    if (currentStageIndex === -1) return;
+    
     cities.forEach(city => {
-        if (!gameState.unlockedCities.includes(city.name) && gameState.currentStage === city.unlockStage) {
+        const cityStageIndex = stages.findIndex(stage => stage.name === city.unlockStage);
+        if (cityStageIndex === -1) return;
+        
+        if (!gameState.unlockedCities.includes(city.name) && cityStageIndex <= currentStageIndex) {
             gameState.unlockedCities.push(city.name);
-            showNotification(`🏙️ ${city.name} unlocked! Move to new city for ${city.bonus}x income bonus!`, 'success');
+            showNotification(`🏙️ ${city.name} unlocked! You can travel there anytime.`, 'success');
         }
     });
 }
@@ -2052,10 +2058,24 @@ function updateCrypto() {
         const holding = gameState.cryptoHoldings[cryptoId];
         const card = document.querySelector(`[data-investment="${cryptoId}"]`);
         
-        if (card && holding) {
-            const amountElement = card.querySelector('.investment-amount');
-            if (amountElement) {
-                amountElement.textContent = `${holding.amount.toFixed(6)} ${investment.symbol}`;
+        if (card) {
+            const priceElement = card.querySelector('.investment-price');
+            if (priceElement) {
+                priceElement.textContent = `$${formatNumber(investment.price)}`;
+            }
+            
+            const changeElement = card.querySelector('.investmentCryptoChange') || card.querySelector('.investment-change');
+            if (changeElement) {
+                changeElement.textContent = `${investment.change >= 0 ? '+' : ''}${investment.change.toFixed(2)}%`;
+                changeElement.classList.remove('positive', 'negative');
+                changeElement.classList.add(investment.change >= 0 ? 'positive' : 'negative');
+            }
+            
+            if (holding) {
+                const amountElement = card.querySelector('.investment-amount');
+                if (amountElement) {
+                    amountElement.textContent = `${holding.amount.toFixed(6)} ${investment.symbol}`;
+                }
             }
         }
     });

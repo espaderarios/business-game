@@ -4023,17 +4023,20 @@ body {
     margin-bottom: 5px;
 }
 
-.investment-change {
+.investment-change,
+.investmentCryptoChange {
     font-size: 11px;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.investment-change.positive {
+.investment-change.positive,
+.investmentCryptoChange.positive {
     color: #10b981;
 }
 
-.investment-change.negative {
+.investment-change.negative,
+.investmentCryptoChange.negative {
     color: #ef4444;
 }
 
