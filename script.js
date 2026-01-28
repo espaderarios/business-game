@@ -1832,9 +1832,42 @@ function selectCity(cityName) {
     updateUI();
 }
 
+// Customize character
+function customizeCharacter() {
+    showNotification('Character customization coming soon!', 'info');
+}
+
+// Map activity names from HTML to lifeActivities array
+const activityNameMap = {
+    'Exercise': 'Exercise',
+    'Gym': 'Spa Day',
+    'Spa': 'Spa Day',
+    'Meditation': 'Meditation',
+    'Read': 'Study Course',
+    'Course': 'Study Course',
+    'CoffeeHangout': 'Networking',
+    'Party': 'Party',
+    'Concert': 'Party',
+    'Yacht': 'Spa Day',
+    'VacationResort': 'Spa Day',
+    'SpaceTrip': 'Party'
+};
+
+// Perform activity (wrapper for performLifeActivity)
+function performActivity(activityName) {
+    const mappedName = activityNameMap[activityName] || activityName;
+    performLifeActivity(mappedName);
+}
+
 // Perform life activity
 function performLifeActivity(activityName) {
     const activity = lifeActivities.find(a => a.name === activityName);
+    
+    if (!activity) {
+        console.error('Activity not found:', activityName);
+        showNotification('Activity not found!', 'error');
+        return;
+    }
     
     if (gameState.balance >= activity.cost) {
         gameState.balance -= activity.cost;
