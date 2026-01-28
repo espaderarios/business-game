@@ -87,7 +87,166 @@ const gameState = {
     lastSave: Date.now(),
     notifications: [],
     currentCity: 'New York',
-    unlockedCities: ['New York']
+    unlockedCities: ['New York'],
+    ventureUpgrades: {} // Will store purchased upgrades for each venture
+};
+
+// Venture-specific upgrades
+const ventureUpgrades = {
+    lemonade: [
+        { id: 'lemonade_tables', name: 'Add Tables', description: 'Add seating area for customers', icon: '🪑', cost: 800, incomeBonus: 25 },
+        { id: 'lemonade_sign', name: 'Neon Sign', description: 'Attract more customers', icon: '💡', cost: 1200, incomeBonus: 30 },
+        { id: 'lemonade_menu', name: 'Expand Menu', description: 'Offer more flavors', icon: '📋', cost: 1500, incomeBonus: 40 }
+    ],
+    kiosk: [
+        { id: 'kiosk_shelves', name: 'Add Shelves', description: 'Stock more products', icon: '📦', cost: 3000, incomeBonus: 50 },
+        { id: 'kiosk_display', name: 'Digital Display', description: 'Show product ads', icon: '📺', cost: 5000, incomeBonus: 60 },
+        { id: 'kiosk_cooler', name: 'Refrigerator', description: 'Sell cold drinks', icon: '🧊', cost: 7000, incomeBonus: 75 }
+    ],
+    foodtruck: [
+        { id: 'truck_grill', name: 'Upgrade Grill', description: 'Cook faster', icon: '🍳', cost: 75000, incomeBonus: 500 },
+        { id: 'truck_branding', name: 'Food Truck Wrap', description: 'Eye-catching design', icon: '🎨', cost: 100000, incomeBonus: 600 },
+        { id: 'truck_equipment', name: 'Pro Equipment', description: 'Better cooking tools', icon: '🔪', cost: 150000, incomeBonus: 800 }
+    ],
+    smallstore: [
+        { id: 'store_layout', name: 'Optimize Layout', description: 'Better customer flow', icon: '🗺️', cost: 150000, incomeBonus: 800 },
+        { id: 'store_ac', name: 'Air Conditioning', description: 'Comfortable shopping', icon: '❄️', cost: 200000, incomeBonus: 1000 },
+        { id: 'store_security', name: 'Security System', description: 'Prevent losses', icon: '🔒', cost: 250000, incomeBonus: 1200 }
+    ],
+    boutique: [
+        { id: 'boutique_mirrors', name: 'Full-Length Mirrors', description: 'Better try-on experience', icon: '🪞', cost: 225000, incomeBonus: 1200 },
+        { id: 'boutique_lighting', name: 'Designer Lighting', description: 'Showcase products', icon: '💡', cost: 300000, incomeBonus: 1500 },
+        { id: 'boutique_brands', name: 'Premium Brands', description: 'Stock luxury items', icon: '👗', cost: 400000, incomeBonus: 2000 }
+    ],
+    restaurant: [
+        { id: 'restaurant_tables', name: 'Add Tables', description: 'Serve more guests', icon: '🍽️', cost: 450000, incomeBonus: 2400 },
+        { id: 'restaurant_kitchen', name: 'Upgrade Kitchen', description: 'Faster service', icon: '👨‍🍳', cost: 600000, incomeBonus: 3000 },
+        { id: 'restaurant_chef', name: 'Hire Head Chef', description: 'Better quality food', icon: '⭐', cost: 800000, incomeBonus: 4000 },
+        { id: 'restaurant_bar', name: 'Add Bar', description: 'Serve drinks', icon: '🍷', cost: 1000000, incomeBonus: 5000 }
+    ],
+    cafe: [
+        { id: 'cafe_machines', name: 'Espresso Machine', description: 'Premium coffee', icon: '☕', cost: 900000, incomeBonus: 4000 },
+        { id: 'cafe_pastries', name: 'Bakery Section', description: 'Sell pastries', icon: '🥐', cost: 1200000, incomeBonus: 5000 },
+        { id: 'cafe_wifi', name: 'Free WiFi', description: 'Attract remote workers', icon: '📶', cost: 1500000, incomeBonus: 6000 },
+        { id: 'cafe_terrace', name: 'Outdoor Terrace', description: 'Al fresco seating', icon: '🌤️', cost: 1800000, incomeBonus: 7000 }
+    ],
+    bar: [
+        { id: 'bar_cocktails', name: 'Cocktail Menu', description: 'Craft cocktails', icon: '🍸', cost: 1350000, incomeBonus: 6000 },
+        { id: 'bar_music', name: 'Live Music', description: 'Entertainment', icon: '🎵', cost: 1800000, incomeBonus: 7500 },
+        { id: 'bar_vip', name: 'VIP Section', description: 'Premium area', icon: '💎', cost: 2250000, incomeBonus: 9000 }
+    ],
+    salon: [
+        { id: 'salon_chairs', name: 'Extra Chairs', description: 'More clients', icon: '💺', cost: 1800000, incomeBonus: 8000 },
+        { id: 'salon_products', name: 'Premium Products', description: 'Better results', icon: '💄', cost: 2400000, incomeBonus: 10000 },
+        { id: 'salon_spa', name: 'Spa Services', description: 'Expand services', icon: '🧖', cost: 3000000, incomeBonus: 12000 }
+    ],
+    gym: [
+        { id: 'gym_equipment', name: 'More Equipment', description: 'Modern machines', icon: '🏋️', cost: 2250000, incomeBonus: 9000 },
+        { id: 'gym_trainers', name: 'Personal Trainers', description: 'Expert guidance', icon: '💪', cost: 3000000, incomeBonus: 11250 },
+        { id: 'gym_pool', name: 'Swimming Pool', description: 'Aquatic fitness', icon: '🏊', cost: 3750000, incomeBonus: 13500 }
+    ],
+    hotel: [
+        { id: 'hotel_rooms', name: 'Add Rooms', description: '20 more rooms', icon: '🛏️', cost: 5250000, incomeBonus: 18000 },
+        { id: 'hotel_restaurant', name: 'Hotel Restaurant', description: 'On-site dining', icon: '🍴', cost: 7000000, incomeBonus: 22500 },
+        { id: 'hotel_spa', name: 'Luxury Spa', description: 'Premium amenity', icon: '💆', cost: 8750000, incomeBonus: 27000 },
+        { id: 'hotel_rooftop', name: 'Rooftop Bar', description: 'Scenic views', icon: '🌃', cost: 10500000, incomeBonus: 31500 }
+    ],
+    nightclub: [
+        { id: 'club_sound', name: 'Sound System', description: 'Premium audio', icon: '🔊', cost: 9000000, incomeBonus: 30000 },
+        { id: 'club_lights', name: 'LED Lighting', description: 'Amazing visuals', icon: '💡', cost: 12000000, incomeBonus: 37500 },
+        { id: 'club_dj', name: 'Celebrity DJ', description: 'Draw big crowds', icon: '🎧', cost: 15000000, incomeBonus: 45000 }
+    ],
+    mall: [
+        { id: 'mall_stores', name: 'Add Stores', description: '10 more retailers', icon: '🏬', cost: 15000000, incomeBonus: 50000 },
+        { id: 'mall_parking', name: 'Parking Garage', description: 'Easy access', icon: '🅿️', cost: 20000000, incomeBonus: 62500 },
+        { id: 'mall_cinema', name: 'Movie Theater', description: 'Entertainment hub', icon: '🎬', cost: 25000000, incomeBonus: 75000 }
+    ],
+    casino: [
+        { id: 'casino_slots', name: 'More Slot Machines', description: '100 new slots', icon: '🎰', cost: 22500000, incomeBonus: 70000 },
+        { id: 'casino_tables', name: 'Table Games', description: 'Poker, Blackjack', icon: '🃏', cost: 30000000, incomeBonus: 87500 },
+        { id: 'casino_hotel', name: 'Casino Hotel', description: 'All-in-one resort', icon: '🏨', cost: 37500000, incomeBonus: 105000 }
+    ],
+    techstartup: [
+        { id: 'tech_office', name: 'Bigger Office', description: 'More developers', icon: '🏢', cost: 37500000, incomeBonus: 120000 },
+        { id: 'tech_servers', name: 'Server Farm', description: 'Better infrastructure', icon: '💻', cost: 50000000, incomeBonus: 150000 },
+        { id: 'tech_rd', name: 'R&D Department', description: 'Innovation', icon: '🔬', cost: 62500000, incomeBonus: 180000 }
+    ],
+    crypto: [
+        { id: 'crypto_miners', name: 'Mining Rigs', description: 'Mine cryptocurrency', icon: '⛏️', cost: 75000000, incomeBonus: 240000 },
+        { id: 'crypto_trading', name: 'Trading Bots', description: 'Automated trading', icon: '🤖', cost: 100000000, incomeBonus: 300000 },
+        { id: 'crypto_exchange', name: 'Own Exchange', description: 'Trading platform', icon: '💱', cost: 125000000, incomeBonus: 360000 }
+    ],
+    realestate: [
+        { id: 'real_properties', name: 'More Properties', description: '10 rental units', icon: '🏘️', cost: 150000000, incomeBonus: 440000 },
+        { id: 'real_commercial', name: 'Commercial Buildings', description: 'Higher returns', icon: '🏢', cost: 200000000, incomeBonus: 550000 },
+        { id: 'real_luxury', name: 'Luxury Condos', description: 'Premium market', icon: '🏙️', cost: 250000000, incomeBonus: 660000 }
+    ],
+    stockmarket: [
+        { id: 'stock_portfolio', name: 'Diverse Portfolio', description: 'More stocks', icon: '📊', cost: 300000000, incomeBonus: 800000 },
+        { id: 'stock_advisors', name: 'Financial Advisors', description: 'Expert tips', icon: '👔', cost: 400000000, incomeBonus: 1000000 },
+        { id: 'stock_hedge', name: 'Hedge Fund', description: 'Professional management', icon: '💼', cost: 500000000, incomeBonus: 1200000 }
+    ],
+    airport: [
+        { id: 'airport_terminal', name: 'New Terminal', description: 'More capacity', icon: '🏢', cost: 750000000, incomeBonus: 1800000 },
+        { id: 'airport_runway', name: 'Extra Runway', description: 'More flights', icon: '🛫', cost: 1000000000, incomeBonus: 2250000 },
+        { id: 'airport_cargo', name: 'Cargo Facility', description: 'Freight operations', icon: '📦', cost: 1250000000, incomeBonus: 2700000 },
+        { id: 'airport_airplanes', name: 'Buy Airplanes', description: 'Own fleet', icon: '✈️', cost: 1500000000, incomeBonus: 3150000 }
+    ],
+    spaceline: [
+        { id: 'space_rockets', name: 'More Rockets', description: 'Increase launches', icon: '🚀', cost: 1125000000, incomeBonus: 2400000 },
+        { id: 'space_station', name: 'Space Station', description: 'Orbital hub', icon: '🛸', cost: 1500000000, incomeBonus: 3000000 },
+        { id: 'space_tourism', name: 'Space Tourism', description: 'Commercial flights', icon: '👨‍🚀', cost: 1875000000, incomeBonus: 3600000 }
+    ],
+    satellite: [
+        { id: 'sat_network', name: 'Satellite Network', description: '10 more satellites', icon: '📡', cost: 1500000000, incomeBonus: 3000000 },
+        { id: 'sat_5g', name: '5G Coverage', description: 'High-speed internet', icon: '📶', cost: 2000000000, incomeBonus: 3750000 },
+        { id: 'sat_gps', name: 'GPS Services', description: 'Navigation system', icon: '🗺️', cost: 2500000000, incomeBonus: 4500000 }
+    ],
+    megacorp: [
+        { id: 'mega_branches', name: 'Global Branches', description: '50 offices worldwide', icon: '🌍', cost: 3750000000, incomeBonus: 7000000 },
+        { id: 'mega_brands', name: 'Acquire Brands', description: 'Buy competitors', icon: '🏷️', cost: 5000000000, incomeBonus: 8750000 },
+        { id: 'mega_research', name: 'Research Labs', description: 'Innovation centers', icon: '🔬', cost: 6250000000, incomeBonus: 10500000 }
+    ],
+    globalbank: [
+        { id: 'bank_branches', name: 'International Branches', description: '100 locations', icon: '🏦', cost: 7500000000, incomeBonus: 14000000 },
+        { id: 'bank_investment', name: 'Investment Division', description: 'Asset management', icon: '💰', cost: 10000000000, incomeBonus: 17500000 },
+        { id: 'bank_digital', name: 'Digital Banking', description: 'Online platform', icon: '💳', cost: 12500000000, incomeBonus: 21000000 }
+    ],
+    spacemining: [
+        { id: 'mining_asteroids', name: 'Asteroid Mining', description: 'Rare minerals', icon: '☄️', cost: 15000000000, incomeBonus: 28000000 },
+        { id: 'mining_fleet', name: 'Mining Fleet', description: '10 mining ships', icon: '🚀', cost: 20000000000, incomeBonus: 35000000 },
+        { id: 'mining_refinery', name: 'Space Refinery', description: 'Process materials', icon: '⚙️', cost: 25000000000, incomeBonus: 42000000 }
+    ],
+    quantumtech: [
+        { id: 'quantum_computer', name: 'Quantum Computer', description: 'Advanced computing', icon: '💻', cost: 37500000000, incomeBonus: 70000000 },
+        { id: 'quantum_lab', name: 'Research Lab', description: 'Breakthrough tech', icon: '🔬', cost: 50000000000, incomeBonus: 87500000 },
+        { id: 'quantum_ai', name: 'Quantum AI', description: 'Next-gen AI', icon: '🤖', cost: 62500000000, incomeBonus: 105000000 }
+    ],
+    interstellar: [
+        { id: 'inter_ships', name: 'Interstellar Ships', description: 'Deep space travel', icon: '🛸', cost: 75000000000, incomeBonus: 140000000 },
+        { id: 'inter_colonies', name: 'Space Colonies', description: 'Habitable stations', icon: '🏙️', cost: 100000000000, incomeBonus: 175000000 },
+        { id: 'inter_trade', name: 'Trade Routes', description: 'Interstellar commerce', icon: '🛰️', cost: 125000000000, incomeBonus: 210000000 }
+    ],
+    dysonsphere: [
+        { id: 'dyson_panels', name: 'Solar Panels', description: 'Capture star energy', icon: '☀️', cost: 150000000000, incomeBonus: 280000000 },
+        { id: 'dyson_grid', name: 'Energy Grid', description: 'Power distribution', icon: '⚡', cost: 200000000000, incomeBonus: 350000000 },
+        { id: 'dyson_complete', name: 'Complete Sphere', description: 'Full coverage', icon: '🌟', cost: 250000000000, incomeBonus: 420000000 }
+    ],
+    galaxywide: [
+        { id: 'galaxy_empire', name: 'Galactic Empire', description: '1000 systems', icon: '👑', cost: 375000000000, incomeBonus: 700000000 },
+        { id: 'galaxy_fleet', name: 'Armada Fleet', description: 'Massive fleet', icon: '🚀', cost: 500000000000, incomeBonus: 875000000 },
+        { id: 'galaxy_capital', name: 'Capital World', description: 'Empire headquarters', icon: '🌍', cost: 625000000000, incomeBonus: 1050000000 }
+    ],
+    universal: [
+        { id: 'universal_portal', name: 'Portal Network', description: 'Instant travel', icon: '🌀', cost: 750000000000, incomeBonus: 1400000000 },
+        { id: 'universal_matter', name: 'Matter Replicator', description: 'Create anything', icon: '⚛️', cost: 1000000000000, incomeBonus: 1750000000 },
+        { id: 'universal_godmode', name: 'Universe Control', description: 'Ultimate power', icon: '💫', cost: 1250000000000, incomeBonus: 2100000000 }
+    ],
+    multiverse: [
+        { id: 'multi_dimensions', name: 'Dimensional Travel', description: 'Access all realities', icon: '🌌', cost: 1500000000000, incomeBonus: 2800000000 },
+        { id: 'multi_timelines', name: 'Timeline Control', description: 'Alter time', icon: '⏰', cost: 2000000000000, incomeBonus: 3500000000 },
+        { id: 'multi_omnipotence', name: 'Omnipotence', description: 'Become all-powerful', icon: '👁️', cost: 2500000000000, incomeBonus: 4200000000 }
+    ]
 };
 
 // Cities configuration
@@ -1335,23 +1494,112 @@ function openVentureDetail(ventureId) {
         galaxywide: 'Galaxy Wide', universal: 'Universal Corp', multiverse: 'Multiverse Inc'
     };
     
+    const ventureIcons = {
+        lemonade: '🍋', kiosk: '🏪', foodtruck: '🚚', smallstore: '🏬',
+        boutique: '👗', restaurant: '🍽️', cafe: '☕', bar: '🍺', salon: '💇',
+        gym: '🏋️', hotel: '🏨', nightclub: '🎉', mall: '🛍️', casino: '🎰',
+        techstartup: '💻', crypto: '₿', realestate: '🏘️',
+        stockmarket: '📈', airport: '✈️', spaceline: '🚀', satellite: '🛰️',
+        megacorp: '🏢', globalbank: '🏦', spacemining: '⛏️',
+        quantumtech: '⚛️', interstellar: '🌌', dysonsphere: '☀️',
+        galaxywide: '🌍', universal: '💫', multiverse: '🌀'
+    };
+    
+    // Initialize venture upgrades if not exists
+    if (!gameState.ventureUpgrades[ventureId]) {
+        gameState.ventureUpgrades[ventureId] = [];
+    }
+    
     document.getElementById('ventureDetailName').textContent = ventureNames[ventureId];
+    document.getElementById('ventureDetailIcon').textContent = ventureIcons[ventureId];
     document.getElementById('ventureDetailLevel').textContent = venture.level;
     document.getElementById('ventureDetailIncome').textContent = `$${formatNumber(venture.income)}/min`;
-    document.getElementById('ventureDetailManager').textContent = venture.manager ? 'Hired' : 'Not Hired';
+    document.getElementById('ventureDetailUpgrades').textContent = gameState.ventureUpgrades[ventureId].length;
     
-    const upgradeCost = venture.upgradeCost;
-    document.getElementById('ventureDetailUpgradeCost').textContent = `$${formatNumber(upgradeCost)}`;
-    const upgradeBtn = document.getElementById('ventureDetailUpgradeBtn');
-    upgradeBtn.disabled = gameState.balance < upgradeCost;
-    
+    // Manager section
     const managerCost = venture.managerCost;
     document.getElementById('ventureDetailManagerCost').textContent = `$${formatNumber(managerCost)}`;
     const managerBtn = document.getElementById('ventureDetailManagerBtn');
     managerBtn.disabled = venture.manager || gameState.balance < managerCost;
-    managerBtn.textContent = venture.manager ? 'Manager Hired' : `Hire Manager - $${formatNumber(managerCost)}`;
+    if (venture.manager) {
+        managerBtn.innerHTML = '✓ Hired';
+        managerBtn.style.background = 'rgba(16, 185, 129, 0.3)';
+    } else {
+        managerBtn.innerHTML = `Hire - <span id="ventureDetailManagerCost">$${formatNumber(managerCost)}</span>`;
+        managerBtn.style.background = '';
+    }
+    
+    // Populate upgrades
+    const upgradesGrid = document.getElementById('ventureUpgradesGrid');
+    upgradesGrid.innerHTML = '';
+    
+    const upgrades = ventureUpgrades[ventureId] || [];
+    upgrades.forEach(upgrade => {
+        const isPurchased = gameState.ventureUpgrades[ventureId].includes(upgrade.id);
+        const canAfford = gameState.balance >= upgrade.cost;
+        
+        const upgradeCard = document.createElement('div');
+        upgradeCard.className = `upgrade-card ${isPurchased ? 'purchased' : ''}`;
+        upgradeCard.innerHTML = `
+            <div class="upgrade-info">
+                <div class="upgrade-icon">${upgrade.icon}</div>
+                <div class="upgrade-details">
+                    <h4>${upgrade.name}</h4>
+                    <p>${upgrade.description}</p>
+                    <div class="upgrade-benefit">+$${formatNumber(upgrade.incomeBonus)}/min</div>
+                </div>
+            </div>
+            <div class="upgrade-action">
+                ${isPurchased ? 
+                    '<div class="upgrade-status">Owned</div>' : 
+                    `<div class="upgrade-cost">$${formatNumber(upgrade.cost)}</div>
+                    <button class="upgrade-btn-small" ${canAfford ? '' : 'disabled'} 
+                        onclick="purchaseVentureUpgrade('${ventureId}', '${upgrade.id}')">
+                        Buy
+                    </button>`
+                }
+            </div>
+        `;
+        upgradesGrid.appendChild(upgradeCard);
+    });
     
     showModal('ventureDetail');
+}
+
+// Purchase venture upgrade
+function purchaseVentureUpgrade(ventureId, upgradeId) {
+    const upgrades = ventureUpgrades[ventureId];
+    const upgrade = upgrades.find(u => u.id === upgradeId);
+    
+    if (!upgrade) return;
+    
+    if (gameState.ventureUpgrades[ventureId].includes(upgradeId)) {
+        showNotification('Upgrade already purchased!', 'warning');
+        return;
+    }
+    
+    if (gameState.balance < upgrade.cost) {
+        showNotification('Insufficient funds!', 'error');
+        return;
+    }
+    
+    // Purchase upgrade
+    gameState.balance -= upgrade.cost;
+    gameState.ventureUpgrades[ventureId].push(upgradeId);
+    
+    // Apply income bonus
+    const venture = gameState.ventures[ventureId];
+    venture.income += upgrade.incomeBonus;
+    venture.baseIncome += upgrade.incomeBonus;
+    
+    updateUI();
+    updateVentures();
+    showNotification(`${upgrade.name} purchased! +$${formatNumber(upgrade.incomeBonus)}/min`, 'success');
+    
+    // Refresh modal with animation
+    setTimeout(() => {
+        openVentureDetail(ventureId);
+    }, 100);
 }
 
 // Upgrade venture from modal

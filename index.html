@@ -2005,11 +2005,12 @@
     </div>
 
     <!-- Venture Details Modal -->
-    <div class="modal" id="ventureDetailModal">
-        <div class="modal-content">
+    <div class="modal venture-upgrade-modal" id="ventureDetailModal">
+        <div class="modal-content venture-upgrade-content">
             <div class="modal-header">
+                <button class="back-btn" onclick="hideModal('ventureDetail')">← Back</button>
                 <h2 id="ventureDetailName">Venture Name</h2>
-                <button class="close-btn" onclick="hideModal('ventureDetail')">✕</button>
+                <div class="venture-icon-large" id="ventureDetailIcon">🍋</div>
             </div>
             <div class="venture-detail-content">
                 <div class="venture-detail-stats">
@@ -2022,24 +2023,30 @@
                         <span class="stat-value" id="ventureDetailIncome">$0</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-label">Manager:</span>
-                        <span class="stat-value" id="ventureDetailManager">Not Hired</span>
+                        <span class="stat-label">Total Upgrades:</span>
+                        <span class="stat-value" id="ventureDetailUpgrades">0</span>
                     </div>
                 </div>
-                <div class="venture-detail-actions">
-                    <div class="action-item">
-                        <h3>Upgrade</h3>
-                        <p id="ventureDetailUpgradeDesc">Increase income by 50%</p>
-                        <button class="action-btn upgrade-btn" id="ventureDetailUpgradeBtn" onclick="upgradeVentureFromModal()">
-                            Upgrade - <span id="ventureDetailUpgradeCost">$0</span>
+                
+                <div class="manager-section">
+                    <div class="manager-card">
+                        <div class="manager-info">
+                            <div class="manager-icon">👔</div>
+                            <div>
+                                <h3>Manager</h3>
+                                <p id="ventureDetailManagerDesc">Auto-generates 80% of income</p>
+                            </div>
+                        </div>
+                        <button class="action-btn manager-btn" id="ventureDetailManagerBtn" onclick="hireManagerFromModal()">
+                            Hire - <span id="ventureDetailManagerCost">$0</span>
                         </button>
                     </div>
-                    <div class="action-item">
-                        <h3>Hire Manager</h3>
-                        <p id="ventureDetailManagerDesc">Generates 80% of income while offline</p>
-                        <button class="action-btn manager-btn" id="ventureDetailManagerBtn" onclick="hireManagerFromModal()">
-                            Hire Manager - <span id="ventureDetailManagerCost">$0</span>
-                        </button>
+                </div>
+
+                <div class="upgrades-section">
+                    <h3>Upgrades</h3>
+                    <div class="upgrades-grid" id="ventureUpgradesGrid">
+                        <!-- Upgrades will be dynamically added here -->
                     </div>
                 </div>
             </div>
