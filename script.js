@@ -85,7 +85,9 @@ const gameState = {
         gifts: 0
     },
     lastSave: Date.now(),
-    notifications: []
+    notifications: [],
+    currentCity: 'New York',
+    unlockedCities: ['New York']
 };
 
 // Cities configuration
