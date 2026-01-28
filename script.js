@@ -253,10 +253,10 @@ const ventureUpgrades = {
 const cities = [
     { name: 'New York', unlockStage: 'Beginner', bonus: 1.0, icon: '🏙️' },
     { name: 'Los Angeles', unlockStage: 'Entrepreneur', bonus: 1.2, icon: '🌴' },
-    { name: 'Chicago', unlockStage: 'Business Owner', bonus: 1.3, icon: '🏗️' },
     { name: 'Miami', unlockStage: 'Tycoon', bonus: 1.5, icon: '🏖️' },
-    { name: 'Las Vegas', unlockStage: 'Magnate', bonus: 1.8, icon: '🎰' },
-    { name: 'Dubai', unlockStage: 'Legend', bonus: 2.0, icon: '🏜️' }
+    { name: 'Tokyo', unlockStage: 'Magnate', bonus: 1.8, icon: '🗼' },
+    { name: 'Dubai', unlockStage: 'Legend', bonus: 2.0, icon: '🏰' },
+    { name: 'Monaco', unlockStage: 'Billionaire', bonus: 2.5, icon: '🎰' }
 ];
 
 // Life activities
@@ -607,7 +607,8 @@ const stages = [
     { name: 'Business Owner', target: 1000000, reward: 'Sports Car', rewardIcon: '🚗' },
     { name: 'Tycoon', target: 5000000, reward: 'Mansion', rewardIcon: '🏰' },
     { name: 'Magnate', target: 10000000, reward: 'Private Jet', rewardIcon: '✈️' },
-    { name: 'Legend', target: 50000000, reward: 'Private Island', rewardIcon: '🏝️' }
+    { name: 'Legend', target: 50000000, reward: 'Private Island', rewardIcon: '🏝️' },
+    { name: 'Billionaire', target: 100000000, reward: 'Yacht Collection', rewardIcon: '🛥️' }
 ];
 
 // DOM Elements
@@ -1044,6 +1045,9 @@ function updateCities() {
     document.querySelectorAll('.city-card').forEach(card => {
         const cityName = card.dataset.city;
         const cityData = cities.find(c => c.name === cityName);
+        
+        // Skip if city data not found
+        if (!cityData) return;
         
         if (gameState.unlockedCities.includes(cityName)) {
             card.classList.remove('locked');

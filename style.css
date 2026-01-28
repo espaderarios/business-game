@@ -271,12 +271,17 @@ body {
     -webkit-backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.2);
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .venture-level {
     font-size: 12px;
     color: #94a3b8;
     margin: 5px 0;
+    pointer-events: none;
 }
 
 .venture-actions {
@@ -284,6 +289,8 @@ body {
     flex-direction: column;
     gap: 8px;
     margin-top: 10px;
+    position: relative;
+    z-index: 10;
 }
 
 .venture-btn {
@@ -296,6 +303,14 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3);
+    touch-action: manipulation;
+    position: relative;
+    z-index: 11;
+}
+
+.venture-btn:active {
+    transform: scale(0.95);
 }
 
 .venture-btn:hover {
@@ -339,6 +354,7 @@ body {
 .venture-icon {
     font-size: 32px;
     margin-bottom: 8px;
+    pointer-events: none;
 }
 
 .venture-name {
@@ -346,18 +362,21 @@ body {
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 4px;
+    pointer-events: none;
 }
 
 .venture-cost {
     font-size: 11px;
     color: #ef4444;
     margin-bottom: 2px;
+    pointer-events: none;
 }
 
 .venture-income {
     font-size: 10px;
     color: #10b981;
     font-weight: 600;
+    pointer-events: none;
 }
 
 /* Assets Section */
@@ -870,6 +889,13 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3);
+    touch-action: manipulation;
+    z-index: 100;
+}
+
+.back-btn:active {
+    transform: scale(0.95);
 }
 
 .back-btn:hover {
@@ -998,6 +1024,12 @@ body {
     gap: 15px;
     transition: all 0.3s ease;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(139, 92, 246, 0.2);
+    touch-action: manipulation;
+}
+
+.upgrade-card:active:not(.purchased) {
+    transform: scale(0.98);
 }
 
 .upgrade-card:hover:not(.purchased) {
@@ -1010,6 +1042,7 @@ body {
     background: rgba(16, 185, 129, 0.1);
     border-color: rgba(16, 185, 129, 0.3);
     opacity: 0.7;
+    cursor: default;
 }
 
 .upgrade-info {
@@ -1017,11 +1050,13 @@ body {
     align-items: center;
     gap: 12px;
     flex: 1;
+    pointer-events: none;
 }
 
 .upgrade-icon {
     font-size: 28px;
     min-width: 28px;
+    pointer-events: none;
 }
 
 .upgrade-details h4 {
@@ -1029,18 +1064,21 @@ body {
     font-size: 15px;
     font-weight: 600;
     margin: 0 0 4px 0;
+    pointer-events: none;
 }
 
 .upgrade-details p {
     color: #94a3b8;
     font-size: 12px;
     margin: 0 0 6px 0;
+    pointer-events: none;
 }
 
 .upgrade-benefit {
     color: #10b981;
     font-size: 12px;
     font-weight: 600;
+    pointer-events: none;
 }
 
 .upgrade-action {
@@ -1048,12 +1086,15 @@ body {
     flex-direction: column;
     align-items: flex-end;
     gap: 6px;
+    pointer-events: auto;
+    z-index: 10;
 }
 
 .upgrade-cost {
     color: #fbbf24;
     font-size: 14px;
     font-weight: 700;
+    pointer-events: none;
 }
 
 .upgrade-btn-small {
@@ -1066,6 +1107,12 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(139, 92, 246, 0.3);
+    touch-action: manipulation;
+}
+
+.upgrade-btn-small:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 .upgrade-btn-small:hover:not(:disabled) {
@@ -1102,6 +1149,12 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     color: white;
+    -webkit-tap-highlight-color: rgba(139, 92, 246, 0.3);
+    touch-action: manipulation;
+}
+
+.action-btn:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 .action-btn.upgrade-btn {
