@@ -42,10 +42,6 @@
                         <div class="balance-label">Your Balance</div>
                         <div class="balance-amount" id="balance">$59,500.00</div>
                         <div class="action-buttons">
-                            <button class="transfer-btn" id="transferBtn">
-                                <i class="fas fa-exchange-alt"></i>
-                                <span>TRANSFER</span>
-                            </button>
                             <button class="topup-btn" id="topupBtn">
                                 <i class="fas fa-upload"></i>
                                 <span>TOP UP</span>
@@ -124,13 +120,13 @@
                 <section class="business-ventures">
                     <h3>Business Ventures</h3>
                     <div class="venture-grid">
-                        <div class="venture-card" data-venture="lemonade">
+                        <div class="venture-card" data-venture="lemonade" onclick="openVentureDetail('lemonade')">
                             <div class="venture-icon">🍋</div>
                             <div class="venture-name">Lemonade Stand</div>
                             <div class="venture-cost">$500</div>
                             <div class="venture-income">+$5/min</div>
                             <div class="venture-level">Level <span class="level-value">1</span></div>
-                            <div class="venture-actions">
+                            <div class="venture-actions" onclick="event.stopPropagation()">
                                 <button class="venture-btn buy-btn" onclick="purchaseVenture('lemonade')">Buy</button>
                                 <button class="venture-btn upgrade-btn hidden" onclick="upgradeVenture('lemonade')">Upgrade $1,000</button>
                                 <button class="venture-btn manager-btn hidden" onclick="hireManager('lemonade')">Manager $2,500</button>
@@ -2002,6 +1998,48 @@
                                 Confirm Prestige
                             </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Venture Details Modal -->
+    <div class="modal" id="ventureDetailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="ventureDetailName">Venture Name</h2>
+                <button class="close-btn" onclick="hideModal('ventureDetail')">✕</button>
+            </div>
+            <div class="venture-detail-content">
+                <div class="venture-detail-stats">
+                    <div class="stat">
+                        <span class="stat-label">Level:</span>
+                        <span class="stat-value" id="ventureDetailLevel">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Income/Min:</span>
+                        <span class="stat-value" id="ventureDetailIncome">$0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Manager:</span>
+                        <span class="stat-value" id="ventureDetailManager">Not Hired</span>
+                    </div>
+                </div>
+                <div class="venture-detail-actions">
+                    <div class="action-item">
+                        <h3>Upgrade</h3>
+                        <p id="ventureDetailUpgradeDesc">Increase income by 50%</p>
+                        <button class="action-btn upgrade-btn" id="ventureDetailUpgradeBtn" onclick="upgradeVentureFromModal()">
+                            Upgrade - <span id="ventureDetailUpgradeCost">$0</span>
+                        </button>
+                    </div>
+                    <div class="action-item">
+                        <h3>Hire Manager</h3>
+                        <p id="ventureDetailManagerDesc">Generates 80% of income while offline</p>
+                        <button class="action-btn manager-btn" id="ventureDetailManagerBtn" onclick="hireManagerFromModal()">
+                            Hire Manager - <span id="ventureDetailManagerCost">$0</span>
+                        </button>
                     </div>
                 </div>
             </div>

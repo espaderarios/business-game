@@ -468,6 +468,7 @@ const withdrawModal = document.getElementById('withdrawModal');
 const cryptoGraphModal = document.getElementById('cryptoGraphModal');
 const stockTradeModal = document.getElementById('stockTradeModal');
 const prestigeModal = document.getElementById('prestigeModal');
+const ventureDetailModal = document.getElementById('ventureDetailModal');
 
 // Apply data-width attributes to elements that need dynamic widths
 function applyDataWidths() {
@@ -1063,6 +1064,7 @@ function setupEventListeners() {
         hideModal('cryptoGraph');
         hideModal('stockTrade');
         hideModal('prestige');
+        hideModal('ventureDetail');
     });
     
     // Crypto transfer button
@@ -1288,6 +1290,8 @@ function showModal(type) {
     } else if (type === 'prestige') {
         prestigeModal.classList.add('active');
         updatePrestigeModal();
+    } else if (type === 'ventureDetail') {
+        ventureDetailModal.classList.add('active');
     }
 }
 
@@ -1308,6 +1312,61 @@ function hideModal(type) {
         stockTradeModal.classList.remove('active');
     } else if (type === 'prestige') {
         prestigeModal.classList.remove('active');
+    } else if (type === 'ventureDetail') {
+        ventureDetailModal.classList.remove('active');
+    }
+}
+
+// Store current venture for modal operations
+let currentVentureDetail = null;
+
+// Open venture detail modal
+function openVentureDetail(ventureId) {
+    currentVentureDetail = ventureId;
+    const venture = gameState.ventures[ventureId];
+    const ventureNames = {
+        lemonade: 'Lemonade Stand', kiosk: 'Kiosk', foodtruck: 'Food Truck', smallstore: 'Small Store',
+        boutique: 'Boutique', restaurant: 'Restaurant', cafe: 'Cafe', bar: 'Bar', salon: 'Salon',
+        gym: 'Gym', hotel: 'Hotel', nightclub: 'Nightclub', mall: 'Mall', casino: 'Casino',
+        techstartup: 'Tech Startup', crypto: 'Crypto Trading', realestate: 'Real Estate',
+        stockmarket: 'Stock Market', airport: 'Airport', spaceline: 'Space Line', satellite: 'Satellite',
+        megacorp: 'Mega Corp', globalbank: 'Global Bank', spacemining: 'Space Mining',
+        quantumtech: 'Quantum Tech', interstellar: 'Interstellar Corp', dysonsphere: 'Dyson Sphere',
+        galaxywide: 'Galaxy Wide', universal: 'Universal Corp', multiverse: 'Multiverse Inc'
+    };
+    
+    document.getElementById('ventureDetailName').textContent = ventureNames[ventureId];
+    document.getElementById('ventureDetailLevel').textContent = venture.level;
+    document.getElementById('ventureDetailIncome').textContent = `$${formatNumber(venture.income)}/min`;
+    document.getElementById('ventureDetailManager').textContent = venture.manager ? 'Hired' : 'Not Hired';
+    
+    const upgradeCost = venture.upgradeCost;
+    document.getElementById('ventureDetailUpgradeCost').textContent = `$${formatNumber(upgradeCost)}`;
+    const upgradeBtn = document.getElementById('ventureDetailUpgradeBtn');
+    upgradeBtn.disabled = gameState.balance < upgradeCost;
+    
+    const managerCost = venture.managerCost;
+    document.getElementById('ventureDetailManagerCost').textContent = `$${formatNumber(managerCost)}`;
+    const managerBtn = document.getElementById('ventureDetailManagerBtn');
+    managerBtn.disabled = venture.manager || gameState.balance < managerCost;
+    managerBtn.textContent = venture.manager ? 'Manager Hired' : `Hire Manager - $${formatNumber(managerCost)}`;
+    
+    showModal('ventureDetail');
+}
+
+// Upgrade venture from modal
+function upgradeVentureFromModal() {
+    if (currentVentureDetail) {
+        upgradeVenture(currentVentureDetail);
+        openVentureDetail(currentVentureDetail); // Refresh modal
+    }
+}
+
+// Hire manager from modal
+function hireManagerFromModal() {
+    if (currentVentureDetail) {
+        hireManager(currentVentureDetail);
+        openVentureDetail(currentVentureDetail); // Refresh modal
     }
 }
 
