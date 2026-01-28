@@ -469,11 +469,20 @@ const cryptoGraphModal = document.getElementById('cryptoGraphModal');
 const stockTradeModal = document.getElementById('stockTradeModal');
 const prestigeModal = document.getElementById('prestigeModal');
 
+// Apply data-width attributes to elements that need dynamic widths
+function applyDataWidths() {
+    document.querySelectorAll('[data-width]').forEach(element => {
+        const width = element.getAttribute('data-width');
+        element.style.setProperty('--dynamic-width', `${width}%`);
+    });
+}
+
 // Initialize game
 function initGame() {
     loadGameState();
     initializePriceHistory(); // Initialize crypto price history
     updateUI();
+    applyDataWidths(); // Apply data-width values from HTML
     updatePrestigeDisplay(); // Update prestige display
     startIncomeGeneration();
     setupEventListeners();
@@ -855,10 +864,10 @@ function updateLifeStats() {
     document.getElementById('socialValue').textContent = stats.social;
     document.getElementById('intelligenceValue').textContent = stats.intelligence;
     
-    document.querySelector('.health-fill').style.width = `${Math.min(stats.health, 100)}%`;
-    document.querySelector('.happiness-fill').style.width = `${Math.min(stats.happiness, 100)}%`;
-    document.querySelector('.social-fill').style.width = `${Math.min(stats.social, 100)}%`;
-    document.querySelector('.intelligence-fill').style.width = `${Math.min(stats.intelligence, 100)}%`;
+    document.querySelector('.health-fill').style.setProperty('--dynamic-width', `${Math.min(stats.health, 100)}%`);
+    document.querySelector('.happiness-fill').style.setProperty('--dynamic-width', `${Math.min(stats.happiness, 100)}%`);
+    document.querySelector('.social-fill').style.setProperty('--dynamic-width', `${Math.min(stats.social, 100)}%`);
+    document.querySelector('.intelligence-fill').style.setProperty('--dynamic-width', `${Math.min(stats.intelligence, 100)}%`);
 }
 
 // Update love life display

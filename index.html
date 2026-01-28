@@ -656,101 +656,454 @@
             <!-- Life Simulator Tab -->
             <div class="tab-content" id="life-tab">
                 <section class="life-section">
-                    <h2>Life Simulator</h2>
+                    <h2>🌟 Life Simulator</h2>
                     
+                    <!-- Character Overview -->
+                    <div class="character-overview">
+                        <div class="character-avatar">
+                            <div class="avatar-circle" id="characterAvatar">👤</div>
+                            <button class="customize-btn" onclick="customizeCharacter()">Customize</button>
+                        </div>
+                        <div class="character-info">
+                            <div class="character-name" id="characterName">Your Name</div>
+                            <div class="character-title" id="characterTitle">Beginner Entrepreneur</div>
+                            <div class="life-score">
+                                <span class="score-label">Life Score:</span>
+                                <span class="score-value" id="lifeScore">245</span>
+                            </div>
+                        </div>
+                        <div class="character-level">
+                            <div class="level-badge">
+                                <span class="level-number" id="lifeLevel">1</span>
+                                <span class="level-text">LVL</span>
+                            </div>
+                            <div class="xp-bar">
+                                <div class="xp-fill" id="xpFill" data-width="35"></div>
+                            </div>
+                            <div class="xp-text">350 / 1000 XP</div>
+                        </div>
+                    </div>
+
                     <!-- City Selection -->
                     <div class="city-selector">
-                        <h3>Current City: <span id="currentCityName">New York</span></h3>
+                        <div class="section-header">
+                            <h3>🏙️ Location</h3>
+                            <span class="current-city" id="currentCityName">New York</span>
+                        </div>
                         <div class="city-grid">
-                            <div class="city-card" data-city="New York">
+                            <div class="city-card active" data-city="New York" onclick="selectCity('New York')">
                                 <div class="city-icon">🏙️</div>
                                 <div class="city-name">New York</div>
-                                <div class="city-bonus">1.0x Income</div>
+                                <div class="city-bonus">+0% Income</div>
+                                <div class="city-cost">Free</div>
                             </div>
-                            <div class="city-card locked" data-city="Los Angeles">
+                            <div class="city-card" data-city="Los Angeles" onclick="selectCity('Los Angeles')">
                                 <div class="city-icon">🌴</div>
                                 <div class="city-name">Los Angeles</div>
-                                <div class="city-requirement">Unlock at Entrepreneur</div>
+                                <div class="city-bonus">+10% Income</div>
+                                <div class="city-cost">$50,000</div>
                             </div>
-                            <div class="city-card locked" data-city="Chicago">
-                                <div class="city-icon">🏗️</div>
-                                <div class="city-name">Chicago</div>
-                                <div class="city-requirement">Unlock at Business Owner</div>
-                            </div>
-                            <div class="city-card locked" data-city="Miami">
+                            <div class="city-card" data-city="Miami" onclick="selectCity('Miami')">
                                 <div class="city-icon">🏖️</div>
                                 <div class="city-name">Miami</div>
-                                <div class="city-requirement">Unlock at Tycoon</div>
+                                <div class="city-bonus">+15% Income</div>
+                                <div class="city-cost">$100,000</div>
+                            </div>
+                            <div class="city-card locked" data-city="Tokyo" onclick="selectCity('Tokyo')">
+                                <div class="city-icon">🗼</div>
+                                <div class="city-name">Tokyo</div>
+                                <div class="city-bonus">+25% Income</div>
+                                <div class="city-requirement">$500K Required</div>
+                            </div>
+                            <div class="city-card locked" data-city="Dubai" onclick="selectCity('Dubai')">
+                                <div class="city-icon">🏰</div>
+                                <div class="city-name">Dubai</div>
+                                <div class="city-bonus">+40% Income</div>
+                                <div class="city-requirement">$2M Required</div>
+                            </div>
+                            <div class="city-card locked" data-city="Monaco" onclick="selectCity('Monaco')">
+                                <div class="city-icon">🎰</div>
+                                <div class="city-name">Monaco</div>
+                                <div class="city-bonus">+60% Income</div>
+                                <div class="city-requirement">$10M Required</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Life Stats -->
                     <div class="life-stats">
-                        <h3>Your Life Stats</h3>
+                        <h3>📊 Life Stats</h3>
                         <div class="stats-grid">
                             <div class="stat-item">
-                                <div class="stat-icon">❤️</div>
-                                <div class="stat-name">Health</div>
-                                <div class="stat-bar">
-                                    <div class="stat-fill health-fill"></div>
+                                <div class="stat-header">
+                                    <div class="stat-icon">❤️</div>
+                                    <div class="stat-name">Health</div>
+                                    <div class="stat-value" id="healthValue">80</div>
                                 </div>
-                                <div class="stat-value" id="healthValue">80</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill health-fill" data-width="80"></div>
+                                </div>
+                                <div class="stat-effects" id="healthEffects">
+                                    <span class="effect-tag positive">Gym Membership</span>
+                                </div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-icon">😊</div>
-                                <div class="stat-name">Happiness</div>
-                                <div class="stat-bar">
-                                    <div class="stat-fill happiness-fill"></div>
+                                <div class="stat-header">
+                                    <div class="stat-icon">😊</div>
+                                    <div class="stat-name">Happiness</div>
+                                    <div class="stat-value" id="happinessValue">70</div>
                                 </div>
-                                <div class="stat-value" id="happinessValue">70</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill happiness-fill" data-width="70"></div>
+                                </div>
+                                <div class="stat-effects" id="happinessEffects">
+                                    <span class="effect-tag">Needs boost</span>
+                                </div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-icon">👥</div>
-                                <div class="stat-name">Social</div>
-                                <div class="stat-bar">
-                                    <div class="stat-fill social-fill"></div>
+                                <div class="stat-header">
+                                    <div class="stat-icon">👥</div>
+                                    <div class="stat-name">Social</div>
+                                    <div class="stat-value" id="socialValue">60</div>
                                 </div>
-                                <div class="stat-value" id="socialValue">60</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill social-fill" data-width="60"></div>
+                                </div>
+                                <div class="stat-effects" id="socialEffects">
+                                    <span class="effect-tag">Go party!</span>
+                                </div>
                             </div>
                             <div class="stat-item">
-                                <div class="stat-icon">🧠</div>
-                                <div class="stat-name">Intelligence</div>
-                                <div class="stat-bar">
-                                    <div class="stat-fill intelligence-fill"></div>
+                                <div class="stat-header">
+                                    <div class="stat-icon">🧠</div>
+                                    <div class="stat-name">Intelligence</div>
+                                    <div class="stat-value" id="intelligenceValue">75</div>
                                 </div>
-                                <div class="stat-value" id="intelligenceValue">75</div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill intelligence-fill" data-width="75"></div>
+                                </div>
+                                <div class="stat-effects" id="intelligenceEffects">
+                                    <span class="effect-tag positive">Reading books</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-header">
+                                    <div class="stat-icon">⚡</div>
+                                    <div class="stat-name">Energy</div>
+                                    <div class="stat-value" id="energyValue">85</div>
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill energy-fill" data-width="85"></div>
+                                </div>
+                                <div class="stat-effects" id="energyEffects">
+                                    <span class="effect-tag positive">Well rested</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-header">
+                                    <div class="stat-icon">🎯</div>
+                                    <div class="stat-name">Focus</div>
+                                    <div class="stat-value" id="focusValue">65</div>
+                                </div>
+                                <div class="stat-bar">
+                                    <div class="stat-fill focus-fill" data-width="65"></div>
+                                </div>
+                                <div class="stat-effects" id="focusEffects">
+                                    <span class="effect-tag">Meditation helps</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Life Activities -->
+                    <!-- Daily Activities -->
                     <div class="life-activities">
-                        <h3>Daily Activities</h3>
+                        <h3>🎯 Daily Activities</h3>
+                        <div class="activity-categories">
+                            <button class="category-btn active" data-category="all">All</button>
+                            <button class="category-btn" data-category="free">Free</button>
+                            <button class="category-btn" data-category="health">Health</button>
+                            <button class="category-btn" data-category="social">Social</button>
+                            <button class="category-btn" data-category="mind">Mind</button>
+                        </div>
                         <div class="activity-grid">
-                            <div class="activity-card" data-activity="Exercise">
+                            <!-- Health Activities -->
+                            <div class="activity-card" data-activity="Exercise" data-category="health free" onclick="performActivity('Exercise')">
                                 <div class="activity-icon">🏃</div>
-                                <div class="activity-name">Exercise</div>
-                                <div class="activity-cost">Free</div>
-                                <div class="activity-effect">+10 Health, +5 Happiness</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Morning Run</div>
+                                    <div class="activity-time">⏱️ 30 min</div>
+                                </div>
+                                <div class="activity-cost free">Free</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+15 Health</span>
+                                    <span class="effect-badge positive">+8 Energy</span>
+                                    <span class="effect-badge">+5 Happiness</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
                             </div>
-                            <div class="activity-card" data-activity="Meditation">
-                                <div class="activity-icon">🧘</div>
-                                <div class="activity-name">Meditation</div>
-                                <div class="activity-cost">Free</div>
-                                <div class="activity-effect">+8 Happiness, +3 Intelligence</div>
+                            <div class="activity-card" data-activity="Gym" data-category="health" onclick="performActivity('Gym')">
+                                <div class="activity-icon">💪</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Gym Workout</div>
+                                    <div class="activity-time">⏱️ 1 hour</div>
+                                </div>
+                                <div class="activity-cost">$50</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+20 Health</span>
+                                    <span class="effect-badge positive">+10 Happiness</span>
+                                    <span class="effect-badge">-5 Energy</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
                             </div>
-                            <div class="activity-card" data-activity="Study Course">
-                                <div class="activity-icon">📚</div>
-                                <div class="activity-name">Study Course</div>
+                            <div class="activity-card" data-activity="Spa" data-category="health" onclick="performActivity('Spa')">
+                                <div class="activity-icon">🧖</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Spa Day</div>
+                                    <div class="activity-time">⏱️ 3 hours</div>
+                                </div>
                                 <div class="activity-cost">$500</div>
-                                <div class="activity-effect">+15 Intelligence</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+25 Health</span>
+                                    <span class="effect-badge positive">+30 Happiness</span>
+                                    <span class="effect-badge positive">+20 Energy</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
                             </div>
-                            <div class="activity-card" data-activity="Party">
+                            
+                            <!-- Mental Activities -->
+                            <div class="activity-card" data-activity="Meditation" data-category="mind free" onclick="performActivity('Meditation')">
+                                <div class="activity-icon">🧘</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Meditation</div>
+                                    <div class="activity-time">⏱️ 20 min</div>
+                                </div>
+                                <div class="activity-cost free">Free</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+15 Focus</span>
+                                    <span class="effect-badge positive">+12 Happiness</span>
+                                    <span class="effect-badge">+5 Intelligence</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+                            <div class="activity-card" data-activity="Read" data-category="mind free" onclick="performActivity('Read')">
+                                <div class="activity-icon">📚</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Read Books</div>
+                                    <div class="activity-time">⏱️ 1 hour</div>
+                                </div>
+                                <div class="activity-cost free">Free</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+18 Intelligence</span>
+                                    <span class="effect-badge positive">+10 Focus</span>
+                                    <span class="effect-badge">+5 Happiness</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+                            <div class="activity-card" data-activity="Course" data-category="mind" onclick="performActivity('Course')">
+                                <div class="activity-icon">🎓</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Online Course</div>
+                                    <div class="activity-time">⏱️ 2 hours</div>
+                                </div>
+                                <div class="activity-cost">$500</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+30 Intelligence</span>
+                                    <span class="effect-badge positive">+15 Focus</span>
+                                    <span class="effect-badge">+50 XP</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+
+                            <!-- Social Activities -->
+                            <div class="activity-card" data-activity="CoffeeHangout" data-category="social" onclick="performActivity('CoffeeHangout')">
+                                <div class="activity-icon">☕</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Coffee Hangout</div>
+                                    <div class="activity-time">⏱️ 45 min</div>
+                                </div>
+                                <div class="activity-cost">$25</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+15 Social</span>
+                                    <span class="effect-badge">+10 Happiness</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+                            <div class="activity-card" data-activity="Party" data-category="social" onclick="performActivity('Party')">
                                 <div class="activity-icon">🎉</div>
-                                <div class="activity-name">Party</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Night Out</div>
+                                    <div class="activity-time">⏱️ 4 hours</div>
+                                </div>
                                 <div class="activity-cost">$200</div>
-                                <div class="activity-effect">+12 Happiness, +10 Social</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+25 Social</span>
+                                    <span class="effect-badge positive">+20 Happiness</span>
+                                    <span class="effect-badge">-15 Energy</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+                            <div class="activity-card" data-activity="Concert" data-category="social" onclick="performActivity('Concert')">
+                                <div class="activity-icon">🎵</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Concert</div>
+                                    <div class="activity-time">⏱️ 3 hours</div>
+                                </div>
+                                <div class="activity-cost">$150</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+20 Social</span>
+                                    <span class="effect-badge positive">+25 Happiness</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+
+                            <!-- Luxury Activities -->
+                            <div class="activity-card luxury" data-activity="Yacht" data-category="social" onclick="performActivity('Yacht')">
+                                <div class="activity-icon">🛥️</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Yacht Party</div>
+                                    <div class="activity-time">⏱️ Full Day</div>
+                                </div>
+                                <div class="activity-cost luxury">$5,000</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+40 Social</span>
+                                    <span class="effect-badge positive">+50 Happiness</span>
+                                    <span class="effect-badge">+100 XP</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+                            <div class="activity-card luxury" data-activity="VacationResort" data-category="health" onclick="performActivity('VacationResort')">
+                                <div class="activity-icon">🏝️</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Luxury Resort</div>
+                                    <div class="activity-time">⏱️ 3 Days</div>
+                                </div>
+                                <div class="activity-cost luxury">$10,000</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">+50 Health</span>
+                                    <span class="effect-badge positive">+60 Happiness</span>
+                                    <span class="effect-badge positive">+40 Energy</span>
+                                </div>
+                                <button class="do-activity-btn">Do Activity</button>
+                            </div>
+                            <div class="activity-card luxury locked" data-activity="SpaceTrip" data-category="all" onclick="performActivity('SpaceTrip')">
+                                <div class="activity-icon">🚀</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Space Tourism</div>
+                                    <div class="activity-time">⏱️ 1 Week</div>
+                                </div>
+                                <div class="activity-cost luxury">$1,000,000</div>
+                                <div class="activity-requirement">Billionaire Status</div>
+                                <div class="activity-effect">
+                                    <span class="effect-badge positive">MAX ALL STATS</span>
+                                    <span class="effect-badge">+1000 XP</span>
+                                </div>
+                                <button class="do-activity-btn">Locked</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Life Skills -->
+                    <div class="life-skills">
+                        <h3>🎖️ Life Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card" data-skill="fitness">
+                                <div class="skill-icon">🏋️</div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Fitness</div>
+                                    <div class="skill-level">Level <span id="fitnessLevel">3</span></div>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="45"></div>
+                                    </div>
+                                    <span class="skill-percent">45%</span>
+                                </div>
+                                <div class="skill-bonus">+15% Health gain</div>
+                            </div>
+                            <div class="skill-card" data-skill="charisma">
+                                <div class="skill-icon">💬</div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Charisma</div>
+                                    <div class="skill-level">Level <span id="charismaLevel">2</span></div>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="30"></div>
+                                    </div>
+                                    <span class="skill-percent">30%</span>
+                                </div>
+                                <div class="skill-bonus">+10% Social gain</div>
+                            </div>
+                            <div class="skill-card" data-skill="wisdom">
+                                <div class="skill-icon">🦉</div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Wisdom</div>
+                                    <div class="skill-level">Level <span id="wisdomLevel">4</span></div>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="60"></div>
+                                    </div>
+                                    <span class="skill-percent">60%</span>
+                                </div>
+                                <div class="skill-bonus">+20% Intelligence gain</div>
+                            </div>
+                            <div class="skill-card" data-skill="discipline">
+                                <div class="skill-icon">🎯</div>
+                                <div class="skill-info">
+                                    <div class="skill-name">Discipline</div>
+                                    <div class="skill-level">Level <span id="disciplineLevel">2</span></div>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" data-width="25"></div>
+                                    </div>
+                                    <span class="skill-percent">25%</span>
+                                </div>
+                                <div class="skill-bonus">+10% Focus gain</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Life Achievements -->
+                    <div class="life-achievements">
+                        <h3>🏆 Life Achievements</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-card unlocked">
+                                <div class="achievement-icon">🏃</div>
+                                <div class="achievement-name">Marathon Runner</div>
+                                <div class="achievement-desc">Run 100 times</div>
+                                <div class="achievement-reward">+5% Health Bonus</div>
+                            </div>
+                            <div class="achievement-card unlocked">
+                                <div class="achievement-icon">📚</div>
+                                <div class="achievement-name">Bookworm</div>
+                                <div class="achievement-desc">Read 50 times</div>
+                                <div class="achievement-reward">+5% Intelligence Bonus</div>
+                            </div>
+                            <div class="achievement-card locked">
+                                <div class="achievement-icon">🎓</div>
+                                <div class="achievement-name">Master Mind</div>
+                                <div class="achievement-desc">Reach 100 Intelligence</div>
+                                <div class="achievement-progress">75/100</div>
+                            </div>
+                            <div class="achievement-card locked">
+                                <div class="achievement-icon">👥</div>
+                                <div class="achievement-name">Social Butterfly</div>
+                                <div class="achievement-desc">Attend 100 social events</div>
+                                <div class="achievement-progress">23/100</div>
+                            </div>
+                            <div class="achievement-card locked">
+                                <div class="achievement-icon">💪</div>
+                                <div class="achievement-name">Peak Physical Form</div>
+                                <div class="achievement-desc">Reach 100 Health</div>
+                                <div class="achievement-progress">80/100</div>
+                            </div>
+                            <div class="achievement-card locked">
+                                <div class="achievement-icon">🌟</div>
+                                <div class="achievement-name">Perfect Balance</div>
+                                <div class="achievement-desc">All stats above 90</div>
+                                <div class="achievement-progress">Not achieved</div>
                             </div>
                         </div>
                     </div>
