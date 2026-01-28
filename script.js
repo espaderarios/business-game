@@ -1581,18 +1581,15 @@ function openVentureDetail(ventureId) {
     
     // Manager section
     const managerCost = venture.managerCost;
-    const managerCostEl = document.getElementById('ventureDetailManagerCost');
     const managerBtn = document.getElementById('ventureDetailManagerBtn');
     
-    if (!managerCostEl || !managerBtn) {
-        console.error('Venture detail manager elements not found.');
+    if (!managerBtn) {
+        console.error('Venture detail manager button not found.');
         return;
     }
-    
-    managerCostEl.textContent = `$${formatNumber(managerCost)}`;
     managerBtn.disabled = venture.manager || gameState.balance < managerCost;
     if (venture.manager) {
-        managerBtn.innerHTML = '✓ Hired';
+        managerBtn.textContent = '✓ Hired';
         managerBtn.style.background = 'rgba(16, 185, 129, 0.3)';
     } else {
         managerBtn.innerHTML = `Hire - <span id="ventureDetailManagerCost">$${formatNumber(managerCost)}</span>`;
