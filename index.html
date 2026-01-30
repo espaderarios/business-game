@@ -46,73 +46,11 @@
                                 <i class="fas fa-upload"></i>
                                 <span>TOP UP</span>
                             </button>
+                            <button class="ads-btn" id="adsBtn">
+                                <i class="fas fa-ad"></i>
+                                <span>WATCH ADS</span>
+                            </button>
                         </div>
-                    </div>
-                </section>
-
-                <!-- Statistics Section -->
-                <section class="statistics">
-                    <h3>Earnings</h3>
-                    <div class="chart-container">
-                        <div class="bar-chart" id="barChart">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                        <div class="chart-labels">
-                            <span>$0</span>
-                            <span>$250</span>
-                            <span>$500</span>
-                            <span>$750</span>
-                            <span>$1,000</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Prestige Section -->
-                <section class="prestige-section">
-                    <h3>Prestige System</h3>
-                    <div class="prestige-info">
-                        <div class="prestige-stats">
-                            <div class="prestige-stat">
-                                <span class="stat-label">Current Prestige:</span>
-                                <span class="stat-value" id="currentPrestige">0</span>
-                            </div>
-                            <div class="prestige-stat">
-                                <span class="stat-label">Prestige Bonus:</span>
-                                <span class="stat-value" id="prestigeBonus">x1.0</span>
-                            </div>
-                            <div class="prestige-stat">
-                                <span class="stat-label">Next Prestige:</span>
-                                <span class="stat-value" id="nextPrestige">Reach $1B</span>
-                            </div>
-                        </div>
-                        <div class="prestige-rewards">
-                            <h4>Prestige Rewards:</h4>
-                            <div class="reward-list">
-                                <div class="reward-item">
-                                    <span class="reward-level">Prestige 1</span>
-                                    <span class="reward-desc">x2 Income Multiplier</span>
-                                </div>
-                                <div class="reward-item">
-                                    <span class="reward-level">Prestige 2</span>
-                                    <span class="reward-desc">x3 Income Multiplier + $1M Bonus</span>
-                                </div>
-                                <div class="reward-item">
-                                    <span class="reward-level">Prestige 3</span>
-                                    <span class="reward-desc">x5 Income Multiplier + Special Badge</span>
-                                </div>
-                                <div class="reward-item">
-                                    <span class="reward-level">Prestige 5</span>
-                                    <span class="reward-desc">x10 Income Multiplier + Exclusive Assets</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="prestige-btn" id="prestigeBtn" onclick="showPrestigeModal()">
-                            <span class="btn-icon">⭐</span>
-                            <span class="btn-text">PRESTIGE</span>
-                        </button>
                     </div>
                 </section>
 
@@ -483,170 +421,7 @@
                     </div>
                 </section>
 
-                <!-- Assets Section -->
-                <section class="assets">
-                    <h3>Your Assets</h3>
-                    <div class="asset-grid">
-                        <div class="asset-card" id="houseAsset">
-                            <div class="asset-icon">🏠</div>
-                            <div class="asset-name">House</div>
-                            <div class="asset-level">Level 1</div>
-                            <div class="asset-upgrade">Upgrade $2,000</div>
-                        </div>
-                        <div class="asset-card" id="clothesAsset">
-                            <div class="asset-icon">👔</div>
-                            <div class="asset-name">Wardrobe</div>
-                            <div class="asset-level">Basic</div>
-                            <div class="asset-upgrade">Upgrade $500</div>
-                        </div>
-                        <div class="asset-card" id="carAsset">
-                            <div class="asset-icon">🚗</div>
-                            <div class="asset-name">Car</div>
-                            <div class="asset-level">None</div>
-                            <div class="asset-upgrade">Buy $10,000</div>
-                        </div>
-                        <div class="asset-card" id="watchAsset">
-                            <div class="asset-icon">⌚</div>
-                            <div class="asset-name">Watch</div>
-                            <div class="asset-level">Basic</div>
-                            <div class="asset-upgrade">Upgrade $1,000</div>
-                        </div>
-                        <div class="asset-card" id="planeAsset">
-                            <div class="asset-icon">✈️</div>
-                            <div class="asset-name">Plane</div>
-                            <div class="asset-level">None</div>
-                            <div class="asset-upgrade">Buy $500,000</div>
-                        </div>
-                        <div class="asset-card" id="yachtAsset">
-                            <div class="asset-icon">🛥️</div>
-                            <div class="asset-name">Yacht</div>
-                            <div class="asset-level">None</div>
-                            <div class="asset-upgrade">Buy $250,000</div>
-                        </div>
-                        <div class="asset-card" id="jewelryAsset">
-                            <div class="asset-icon">💎</div>
-                            <div class="asset-name">Jewelry</div>
-                            <div class="asset-level">None</div>
-                            <div class="asset-upgrade">Buy $5,000</div>
-                        </div>
-                        <div class="asset-card" id="artAsset">
-                            <div class="asset-icon">🖼️</div>
-                            <div class="asset-name">Art</div>
-                            <div class="asset-level">None</div>
-                            <div class="asset-upgrade">Buy $10,000</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Collections Section -->
-                <section class="collections">
-                    <h3>Premium Collections</h3>
-                    
-                    <!-- Car Collection -->
-                    <div class="collection-section">
-                        <h4>🏎️ Car Collection</h4>
-                        <div class="collection-grid" id="carCollection">
-                            <div class="collection-item locked" data-car="Used Sedan">
-                                <div class="collection-icon">🚗</div>
-                                <div class="collection-name">Used Sedan</div>
-                                <div class="collection-cost">$10,000</div>
-                                <div class="collection-income">+$50/min</div>
-                            </div>
-                            <div class="collection-item locked" data-car="Sports Car">
-                                <div class="collection-icon">🏎️</div>
-                                <div class="collection-name">Sports Car</div>
-                                <div class="collection-cost">$50,000</div>
-                                <div class="collection-income">+$200/min</div>
-                            </div>
-                            <div class="collection-item locked" data-car="Luxury SUV">
-                                <div class="collection-icon">🚙</div>
-                                <div class="collection-name">Luxury SUV</div>
-                                <div class="collection-cost">$80,000</div>
-                                <div class="collection-income">+$300/min</div>
-                            </div>
-                            <div class="collection-item locked" data-car="Supercar">
-                                <div class="collection-icon">🏁</div>
-                                <div class="collection-name">Supercar</div>
-                                <div class="collection-cost">$200,000</div>
-                                <div class="collection-income">+$600/min</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Plane Collection -->
-                    <div class="collection-section">
-                        <h4>✈️ Plane Collection</h4>
-                        <div class="collection-grid" id="planeCollection">
-                            <div class="collection-item locked" data-plane="Private Jet">
-                                <div class="collection-icon">✈️</div>
-                                <div class="collection-name">Private Jet</div>
-                                <div class="collection-cost">$500,000</div>
-                                <div class="collection-income">+$2,000/min</div>
-                            </div>
-                            <div class="collection-item locked" data-plane="Business Jet">
-                                <div class="collection-icon">💺</div>
-                                <div class="collection-name">Business Jet</div>
-                                <div class="collection-cost">$2,000,000</div>
-                                <div class="collection-income">+$6,000/min</div>
-                            </div>
-                            <div class="collection-item locked" data-plane="Luxury Jet">
-                                <div class="collection-icon">🛩️</div>
-                                <div class="collection-name">Luxury Jet</div>
-                                <div class="collection-cost">$10,000,000</div>
-                                <div class="collection-income">+$25,000/min</div>
-                            </div>
-                            <div class="collection-item locked" data-plane="Private Airliner">
-                                <div class="collection-icon">✈️</div>
-                                <div class="collection-name">Private Airliner</div>
-                                <div class="collection-cost">$50,000,000</div>
-                                <div class="collection-income">+$100,000/min</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Luxury Collection -->
-                    <div class="collection-section">
-                        <h4>💎 Luxury Collection</h4>
-                        <div class="collection-grid" id="luxuryCollection">
-                            <div class="collection-item locked" data-luxury="Diamond Ring">
-                                <div class="collection-icon">💍</div>
-                                <div class="collection-name">Diamond Ring</div>
-                                <div class="collection-cost">$5,000</div>
-                                <div class="collection-income">+$20/min</div>
-                            </div>
-                            <div class="collection-item locked" data-luxury="Gold Watch">
-                                <div class="collection-icon">⌚</div>
-                                <div class="collection-name">Gold Watch</div>
-                                <div class="collection-cost">$15,000</div>
-                                <div class="collection-income">+$50/min</div>
-                            </div>
-                            <div class="collection-item locked" data-luxury="Rare Painting">
-                                <div class="collection-icon">🖼️</div>
-                                <div class="collection-name">Rare Painting</div>
-                                <div class="collection-cost">$50,000</div>
-                                <div class="collection-income">+$200/min</div>
-                            </div>
-                            <div class="collection-item locked" data-luxury="Yacht">
-                                <div class="collection-icon">🛥️</div>
-                                <div class="collection-name">Yacht</div>
-                                <div class="collection-cost">$250,000</div>
-                                <div class="collection-income">+$1,000/min</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 <!-- Stage Progress -->
-                <section class="stage-progress">
-                    <h3>Current Stage: <span id="currentStage">Beginner</span></h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="stage-info">
-                        <span id="stageProgress">$30,000 / $100,000</span>
-                        <span id="nextReward">Next: House Upgrade</span>
-                    </div>
-                </section>
             </div>
 
             <!-- Life Simulator Tab -->
@@ -658,7 +433,10 @@
                     <div class="character-overview">
                         <div class="character-avatar">
                             <div class="avatar-circle" id="characterAvatar">👤</div>
-                            <button class="customize-btn" onclick="customizeCharacter()">Customize</button>
+                            <button class="customize-btn" onclick="customizeCharacter()">
+                                <i class="fas fa-edit"></i>
+                                Customize Character
+                            </button>
                         </div>
                         <div class="character-info">
                             <div class="character-name" id="characterName">Your Name</div>
@@ -1106,6 +884,34 @@
                 </section>
             </div>
 
+            <!-- NPCs Tab -->
+            <div class="tab-content" id="npcs-tab">
+                <h2>People in the City</h2>
+                
+                <!-- Active Quests -->
+                <section class="active-quests">
+                    <h3>Active Quests</h3>
+                    <div class="quests-list" id="questsList">
+                        <div class="no-quests">No active quests. Talk to NPCs to start quests!</div>
+                    </div>
+                </section>
+
+                <!-- NPCs by Location -->
+                <section class="npcs-by-location">
+                    <h3>Find NPCs by Location</h3>
+                    <div class="location-tabs">
+                        <button class="location-tab active" data-location="all">All</button>
+                        <button class="location-tab" data-location="downtown">Downtown</button>
+                        <button class="location-tab" data-location="financial_district">Financial</button>
+                        <button class="location-tab" data-location="shopping_mall">Shopping</button>
+                        <button class="location-tab" data-location="everywhere">Everywhere</button>
+                    </div>
+                    <div class="npcs-grid" id="npcsGrid">
+                        <!-- NPCs will be populated here -->
+                    </div>
+                </section>
+            </div>
+
             <!-- Love Life Tab -->
             <div class="tab-content" id="love-tab">
                 <h2>Love Life</h2>
@@ -1130,6 +936,9 @@
                                 <span class="stat-label">Dates:</span>
                                 <span class="stat-value" id="dateCount">0</span>
                             </div>
+                        </div>
+                        <div class="relationship-actions">
+                            <button class="breakup-btn" id="breakupBtn" onclick="breakUp()">💔 Break Up</button>
                         </div>
                     </div>
                 </section>
@@ -1682,6 +1491,217 @@
             </div>
 
             <div class="tab-content" id="saved-tab">
+                <!-- Prestige Section -->
+                <section class="prestige-section">
+                    <h3>Prestige System</h3>
+                    <div class="prestige-info">
+                        <div class="prestige-stats">
+                            <div class="prestige-stat">
+                                <span class="stat-label">Current Prestige:</span>
+                                <span class="stat-value" id="currentPrestige">0</span>
+                            </div>
+                            <div class="prestige-stat">
+                                <span class="stat-label">Prestige Bonus:</span>
+                                <span class="stat-value" id="prestigeBonus">x1.0</span>
+                            </div>
+                            <div class="prestige-stat">
+                                <span class="stat-label">Next Prestige:</span>
+                                <span class="stat-value" id="nextPrestige">Reach $1B</span>
+                            </div>
+                        </div>
+                        <div class="prestige-rewards">
+                            <h4>Prestige Rewards:</h4>
+                            <div class="reward-list">
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 1</span>
+                                    <span class="reward-desc">x2 Income Multiplier</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 2</span>
+                                    <span class="reward-desc">x3 Income Multiplier + $1M Bonus</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 3</span>
+                                    <span class="reward-desc">x5 Income Multiplier + Special Badge</span>
+                                </div>
+                                <div class="reward-item">
+                                    <span class="reward-level">Prestige 5</span>
+                                    <span class="reward-desc">x10 Income Multiplier + Exclusive Assets</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="prestige-btn" id="prestigeBtn" onclick="showPrestigeModal()">
+                            <span class="btn-icon">⭐</span>
+                            <span class="btn-text">PRESTIGE</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Collections Section -->
+                <section class="collections">
+                    <h3>Premium Collections</h3>
+                    
+                    <!-- Car Collection -->
+                    <div class="collection-section">
+                        <h4>🏎️ Car Collection</h4>
+                        <div class="collection-grid" id="carCollection">
+                            <div class="collection-item locked" data-car="Used Sedan">
+                                <div class="collection-icon">🚗</div>
+                                <div class="collection-name">Used Sedan</div>
+                                <div class="collection-cost">$10,000</div>
+                                <div class="collection-income">+$50/min</div>
+                            </div>
+                            <div class="collection-item locked" data-car="Sports Car">
+                                <div class="collection-icon">🏎️</div>
+                                <div class="collection-name">Sports Car</div>
+                                <div class="collection-cost">$50,000</div>
+                                <div class="collection-income">+$200/min</div>
+                            </div>
+                            <div class="collection-item locked" data-car="Luxury SUV">
+                                <div class="collection-icon">🚙</div>
+                                <div class="collection-name">Luxury SUV</div>
+                                <div class="collection-cost">$80,000</div>
+                                <div class="collection-income">+$300/min</div>
+                            </div>
+                            <div class="collection-item locked" data-car="Supercar">
+                                <div class="collection-icon">🏁</div>
+                                <div class="collection-name">Supercar</div>
+                                <div class="collection-cost">$200,000</div>
+                                <div class="collection-income">+$600/min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plane Collection -->
+                    <div class="collection-section">
+                        <h4>✈️ Plane Collection</h4>
+                        <div class="collection-grid" id="planeCollection">
+                            <div class="collection-item locked" data-plane="Private Jet">
+                                <div class="collection-icon">✈️</div>
+                                <div class="collection-name">Private Jet</div>
+                                <div class="collection-cost">$500,000</div>
+                                <div class="collection-income">+$2,000/min</div>
+                            </div>
+                            <div class="collection-item locked" data-plane="Business Jet">
+                                <div class="collection-icon">💺</div>
+                                <div class="collection-name">Business Jet</div>
+                                <div class="collection-cost">$2,000,000</div>
+                                <div class="collection-income">+$6,000/min</div>
+                            </div>
+                            <div class="collection-item locked" data-plane="Luxury Jet">
+                                <div class="collection-icon">🛩️</div>
+                                <div class="collection-name">Luxury Jet</div>
+                                <div class="collection-cost">$10,000,000</div>
+                                <div class="collection-income">+$25,000/min</div>
+                            </div>
+                            <div class="collection-item locked" data-plane="Private Airliner">
+                                <div class="collection-icon">✈️</div>
+                                <div class="collection-name">Private Airliner</div>
+                                <div class="collection-cost">$50,000,000</div>
+                                <div class="collection-income">+$100,000/min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Luxury Collection -->
+                    <div class="collection-section">
+                        <h4>💎 Luxury Collection</h4>
+                        <div class="collection-grid" id="luxuryCollection">
+                            <div class="collection-item locked" data-luxury="Diamond Ring">
+                                <div class="collection-icon">💍</div>
+                                <div class="collection-name">Diamond Ring</div>
+                                <div class="collection-cost">$5,000</div>
+                                <div class="collection-income">+$20/min</div>
+                            </div>
+                            <div class="collection-item locked" data-luxury="Gold Watch">
+                                <div class="collection-icon">⌚</div>
+                                <div class="collection-name">Gold Watch</div>
+                                <div class="collection-cost">$15,000</div>
+                                <div class="collection-income">+$50/min</div>
+                            </div>
+                            <div class="collection-item locked" data-luxury="Rare Painting">
+                                <div class="collection-icon">🖼️</div>
+                                <div class="collection-name">Rare Painting</div>
+                                <div class="collection-cost">$50,000</div>
+                                <div class="collection-income">+$200/min</div>
+                            </div>
+                            <div class="collection-item locked" data-luxury="Yacht">
+                                <div class="collection-icon">🛥️</div>
+                                <div class="collection-name">Yacht</div>
+                                <div class="collection-cost">$250,000</div>
+                                <div class="collection-income">+$1,000/min</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage Progress -->
+                <section class="stage-progress">
+                    <h3>Current Stage: <span id="currentStage">Beginner</span></h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="stage-info">
+                        <span id="stageProgress">$30,000 / $100,000</span>
+                        <span id="nextReward">Next: House Upgrade</span>
+                    </div>
+                </section>
+
+                <!-- Assets Section -->
+                <section class="assets">
+                    <h3>Your Assets</h3>
+                    <div class="asset-grid">
+                        <div class="asset-card" id="houseAsset">
+                            <div class="asset-icon">🏠</div>
+                            <div class="asset-name">House</div>
+                            <div class="asset-level">Level 1</div>
+                            <div class="asset-upgrade">Upgrade $2,000</div>
+                        </div>
+                        <div class="asset-card" id="clothesAsset">
+                            <div class="asset-icon">👔</div>
+                            <div class="asset-name">Wardrobe</div>
+                            <div class="asset-level">Basic</div>
+                            <div class="asset-upgrade">Upgrade $500</div>
+                        </div>
+                        <div class="asset-card" id="carAsset">
+                            <div class="asset-icon">🚗</div>
+                            <div class="asset-name">Car</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $10,000</div>
+                        </div>
+                        <div class="asset-card" id="watchAsset">
+                            <div class="asset-icon">⌚</div>
+                            <div class="asset-name">Watch</div>
+                            <div class="asset-level">Basic</div>
+                            <div class="asset-upgrade">Upgrade $1,000</div>
+                        </div>
+                        <div class="asset-card" id="planeAsset">
+                            <div class="asset-icon">✈️</div>
+                            <div class="asset-name">Plane</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $500,000</div>
+                        </div>
+                        <div class="asset-card" id="yachtAsset">
+                            <div class="asset-icon">🛥️</div>
+                            <div class="asset-name">Yacht</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $250,000</div>
+                        </div>
+                        <div class="asset-card" id="jewelryAsset">
+                            <div class="asset-icon">💎</div>
+                            <div class="asset-name">Jewelry</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $5,000</div>
+                        </div>
+                        <div class="asset-card" id="artAsset">
+                            <div class="asset-icon">🖼️</div>
+                            <div class="asset-name">Art</div>
+                            <div class="asset-level">None</div>
+                            <div class="asset-upgrade">Buy $10,000</div>
+                        </div>
+                    </div>
+                </section>
+
                 <section class="saved-section">
                     <h3>Your Achievements</h3>
                     <div class="saved-grid">
@@ -1715,6 +1735,9 @@
             </button>
             <button class="nav-btn center-btn" id="mainActionBtn" aria-label="Invest">
                 <i class="fas fa-rocket"></i>
+            </button>
+            <button class="nav-btn" data-page="npcs" aria-label="NPCs">
+                <i class="fas fa-users"></i>
             </button>
             <button class="nav-btn" data-page="love" aria-label="Love">
                 <i class="fas fa-heart"></i>
@@ -2053,6 +2076,101 @@
         </div>
     </div>
 
+    <!-- Life Initialization Modal -->
+    <div class="modal" id="lifeInitModal">
+        <div class="modal-content life-init-content">
+            <div class="modal-header">
+                <h2>🌍 Your Life Begins</h2>
+            </div>
+            <div class="life-init-content-inner">
+                <div class="life-summary" id="lifeSummary">
+                    <div class="life-avatar">
+                        <div class="avatar-circle" id="lifeAvatar">👤</div>
+                    </div>
+                    <div class="life-info">
+                        <h3 id="lifeName">Loading...</h3>
+                        <p class="life-age">Age: <span id="lifeAge">18</span></p>
+                        <p class="life-country">📍 <span id="lifeCountry">Loading...</span></p>
+                        <p class="life-family">👨‍👩‍👧‍👦 <span id="lifeFamily">Loading...</span></p>
+                        <p class="life-wealth">💰 Starting Wealth: $<span id="lifeWealth">0</span></p>
+                        <p class="life-story" id="lifeStory">Loading...</p>
+                    </div>
+                </div>
+                
+                <div class="life-skills">
+                    <h4>Your Starting Skills</h4>
+                    <div class="skills-grid" id="skillsGrid">
+                        <!-- Skills will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="life-actions">
+                    <div class="premium-section">
+                        <div class="premium-lock" id="premiumLock">
+                            <div class="lock-icon">🔒</div>
+                            <div class="lock-text">
+                                <h4>Premium Customization</h4>
+                                <p>Unlock to edit your name, country, family, wealth, and skills</p>
+                                <button class="premium-btn" onclick="unlockPremium()">
+                                    <i class="fas fa-crown"></i>
+                                    Unlock Premium - $4.99
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="premium-unlock" id="premiumUnlock" style="display: none;">
+                            <div class="unlock-icon">👑</div>
+                            <div class="unlock-text">
+                                <h4>Premium Unlocked!</h4>
+                                <p>Customize your life below</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="customization-section" id="customizationSection" style="display: none;">
+                        <div class="customization-group">
+                            <label>Name:</label>
+                            <input type="text" id="customName" maxlength="30">
+                        </div>
+                        
+                        <div class="customization-group">
+                            <label>Country:</label>
+                            <select id="customCountry">
+                                <!-- Countries will be populated here -->
+                            </select>
+                        </div>
+                        
+                        <div class="customization-group">
+                            <label>Family:</label>
+                            <select id="customFamily">
+                                <!-- Families will be populated here -->
+                            </select>
+                        </div>
+                        
+                        <div class="customization-group">
+                            <label>Starting Wealth:</label>
+                            <input type="range" id="customWealth" min="1000" max="10000000" step="1000" value="100000">
+                            <span id="wealthValue">$100,000</span>
+                        </div>
+                        
+                        <div class="skills-customization">
+                            <h5>Customize Skills:</h5>
+                            <div class="skills-custom-grid" id="skillsCustomGrid">
+                                <!-- Skill sliders will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-buttons">
+                        <button class="action-btn start-btn" id="startLifeBtn" onclick="startLife()">
+                            Start Your Journey
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Character Customization Modal -->
     <div class="modal" id="characterCustomizeModal">
         <div class="modal-content">
@@ -2062,10 +2180,6 @@
             </div>
             
             <div class="customize-content">
-                <div class="character-preview">
-                    <div id="characterPreview" class="preview-avatar">👤</div>
-                </div>
-                
                 <div class="customize-section">
                     <h3>Name</h3>
                     <input type="text" id="characterNameInput" placeholder="Enter your name" maxlength="20" />
@@ -2073,72 +2187,34 @@
                 
                 <div class="customize-section">
                     <h3>Avatar</h3>
+                    <div class="character-preview">
+                        <div id="characterPreview" class="preview-avatar">👤</div>
+                    </div>
                     <div class="option-grid">
                         <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-male-1')" title="Male Avatar 1">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="30" r="20" fill="#f4a460"/>
-                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#3b82f6"/>
-                                <circle cx="40" cy="27" r="3" fill="#000"/>
-                                <circle cx="60" cy="27" r="3" fill="#000"/>
-                            </svg>
+                            <img src="charactersvgs/suitm1.svg" alt="Male Suit 1" style="width: 100%; height: 100%; object-fit: contain;">
                         </button>
                         <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-female-1')" title="Female Avatar 1">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="30" r="20" fill="#f4a460"/>
-                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#ec4899"/>
-                                <circle cx="40" cy="27" r="3" fill="#000"/>
-                                <circle cx="60" cy="27" r="3" fill="#000"/>
-                                <path d="M 35 60 Q 50 55 65 60" stroke="#8b5cf6" stroke-width="2" fill="none"/>
-                            </svg>
+                            <img src="charactersvgs/suitf1.svg" alt="Female Suit 1" style="width: 100%; height: 100%; object-fit: contain;">
                         </button>
                         <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-male-2')" title="Male Avatar 2">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="30" r="20" fill="#d4a574"/>
-                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#10b981"/>
-                                <circle cx="40" cy="27" r="3" fill="#000"/>
-                                <circle cx="60" cy="27" r="3" fill="#000"/>
-                                <path d="M 35 45 Q 50 40 65 45" stroke="#333" stroke-width="1.5" fill="none"/>
-                            </svg>
+                            <img src="charactersvgs/suitm2.svg" alt="Male Suit 2" style="width: 100%; height: 100%; object-fit: contain;">
                         </button>
                         <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-female-2')" title="Female Avatar 2">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="30" r="20" fill="#c084fc"/>
-                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#f97316"/>
-                                <circle cx="40" cy="27" r="3" fill="#000"/>
-                                <circle cx="60" cy="27" r="3" fill="#000"/>
-                                <path d="M 50 25 L 45 20 M 50 25 L 55 20 M 50 25 L 50 18" stroke="#c084fc" stroke-width="1.5" fill="none"/>
-                            </svg>
+                            <img src="charactersvgs/suitf2.svg" alt="Female Suit 2" style="width: 100%; height: 100%; object-fit: contain;">
                         </button>
-                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-dark')" title="Dark Avatar">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="30" r="20" fill="#3d3d3d"/>
-                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#1e1e1e"/>
-                                <circle cx="40" cy="27" r="3" fill="#fff"/>
-                                <circle cx="60" cy="27" r="3" fill="#fff"/>
-                            </svg>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-male-3')" title="Male Casual 1">
+                            <img src="charactersvgs/casualm1.svg" alt="Male Casual 1" style="width: 100%; height: 100%; object-fit: contain;">
                         </button>
-                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-light')" title="Light Avatar">
-                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="30" r="20" fill="#ffd699"/>
-                                <path d="M 30 50 Q 30 45 35 45 L 65 45 Q 70 45 70 50 L 70 75 Q 70 80 65 80 L 35 80 Q 30 80 30 75 Z" fill="#fef3c7"/>
-                                <circle cx="40" cy="27" r="3" fill="#000"/>
-                                <circle cx="60" cy="27" r="3" fill="#000"/>
-                            </svg>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-female-3')" title="Female Casual 1">
+                            <img src="charactersvgs/casualf1.svg" alt="Female Casual 1" style="width: 100%; height: 100%; object-fit: contain;">
                         </button>
-                    </div>
-                </div>
-                
-                <div class="customize-section">
-                    <h3>Accessories</h3>
-                    <div class="option-grid">
-                        <button class="option-btn" onclick="selectCustomization('accessory', '')">None</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '👔')">👔</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '👗')">👗</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '🎩')">🎩</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '👑')">👑</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '🕶️')">🕶️</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '💼')">💼</button>
-                        <button class="option-btn" onclick="selectCustomization('accessory', '⌚')">⌚</button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-male-4')" title="Male Casual 2">
+                            <img src="charactersvgs/casualm2.svg" alt="Male Casual 2" style="width: 100%; height: 100%; object-fit: contain;">
+                        </button>
+                        <button class="option-btn svg-btn" onclick="selectCustomization('avatar', 'avatar-female-4')" title="Female Casual 2">
+                            <img src="charactersvgs/casualf2.svg" alt="Female Casual 2" style="width: 100%; height: 100%; object-fit: contain;">
+                        </button>
                     </div>
                 </div>
                 

@@ -2,8 +2,12 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// Load environment variables
-require('dotenv').config();
+// Load environment variables (optional)
+try {
+    require('dotenv').config();
+} catch (e) {
+    // dotenv not installed, continue without it
+}
 
 const server = http.createServer((req, res) => {
     // Enable CORS
